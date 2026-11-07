@@ -1,0 +1,10 @@
+data/
+logs/
+*.sqlite
+*.db
+*.jsonl
+__pycache__/
+.env
+.env.*
+*cookie*
+*token*
