@@ -296,6 +296,10 @@ def attachment(db, fetcher, src, parent, url, label, root, max_bytes=12000000):
 
 
 def crawl_source(src, fetcher, db, root, since, args):
+    if src["mode"] == "attachment":
+        attachment(db,fetcher,src,src["url"],src["url"],src["name"],root)
+        return {"source_id":src["id"],"pages_checked":0,"dated_documents_seen":0,
+                "status":"direct_attachment_checked","last_error":""}
     max_pages = min(src.get("max_pages",12),args.max_pages)
     listing = src["mode"] == "listing"
     q = deque([(src["url"],0,"seed")])
