@@ -1,0 +1,259 @@
+{
+  "version": "1.0",
+  "window_months": 24,
+  "source_count": 18,
+  "sources": [
+    {
+      "id": "policy_ndrc",
+      "category": "policy",
+      "name": "国家发展改革委｜通知",
+      "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/wap_index.html",
+      "mode": "listing",
+      "allowed_hosts": [
+        "www.ndrc.gov.cn"
+      ],
+      "include_regex": "通知|意见|方案|公告|办法|规定",
+      "pagination_template": "index_{n}.html",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "policy_mof",
+      "category": "policy",
+      "name": "财政部｜政策发布",
+      "url": "https://www.mof.gov.cn/zhengwuxinxi/zhengcefabu/index.htm",
+      "mode": "listing",
+      "allowed_hosts": [
+        "www.mof.gov.cn"
+      ],
+      "include_regex": "通知|意见|方案|公告|办法|规定|政策|资金",
+      "pagination_template": "index_{n}.htm",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "policy_mofcom",
+      "category": "policy",
+      "name": "商务部｜政策发布",
+      "url": "https://www.mofcom.gov.cn/zcfb/",
+      "mode": "listing",
+      "allowed_hosts": [
+        "www.mofcom.gov.cn"
+      ],
+      "include_regex": "通知|意见|方案|公告|办法|规定|政策",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "policy_miit",
+      "category": "policy",
+      "name": "工业和信息化部｜政策文件",
+      "url": "https://www.miit.gov.cn/zwgk/zcwj/wjfb/tz/index.html",
+      "mode": "listing",
+      "allowed_hosts": [
+        "www.miit.gov.cn"
+      ],
+      "include_regex": "通知|意见|方案|公告|办法|规定",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "project_nopss_annual",
+      "category": "funded_project",
+      "name": "全国哲学社会科学工作办公室｜年度项目",
+      "url": "https://www.nopss.gov.cn/GB/219469/431027/index.html",
+      "mode": "listing",
+      "allowed_hosts": [
+        "www.nopss.gov.cn"
+      ],
+      "include_regex": "项目|立项|名单|公示|资助|结项",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "project_nopss_major",
+      "category": "funded_project",
+      "name": "全国哲学社会科学工作办公室｜重大项目",
+      "url": "https://www.nopss.gov.cn/GB/219469/431028/index.html",
+      "mode": "listing",
+      "allowed_hosts": [
+        "www.nopss.gov.cn"
+      ],
+      "include_regex": "项目|立项|名单|公示|资助",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "project_nsfc_management",
+      "category": "funded_project",
+      "name": "国家自然科学基金管理科学部｜通知公告",
+      "url": "https://www.nsfc.gov.cn/p1/2857/3203/glkxbtzgg.html",
+      "mode": "listing",
+      "allowed_hosts": [
+        "www.nsfc.gov.cn"
+      ],
+      "include_regex": "项目|立项|资助|指南|结果|通告",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "project_csr",
+      "category": "funded_project",
+      "name": "中国统计学会｜通知公告（页面声明不得转载，仅索引）",
+      "url": "https://csr.stats.gov.cn/tzhgg/",
+      "mode": "listing",
+      "allowed_hosts": [
+        "csr.stats.gov.cn"
+      ],
+      "include_regex": "项目|立项|名单|公示|专项|课题",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "project_stats_2025",
+      "category": "funded_project",
+      "name": "国家统计局｜2025全国统计科学研究正式立项",
+      "url": "https://www.stats.gov.cn/xw/tjxw/tzgg/202509/t20250902_1960974.html",
+      "mode": "detail",
+      "allowed_hosts": [
+        "www.stats.gov.cn"
+      ],
+      "include_regex": "项目|名单|立项",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "project_stats_2026",
+      "category": "funded_project",
+      "name": "国家统计局｜2026全国统计科学研究正式立项",
+      "url": "https://www.stats.gov.cn/xw/tjxw/tzgg/202609/t20260908_1965235.html",
+      "mode": "detail",
+      "allowed_hosts": [
+        "www.stats.gov.cn"
+      ],
+      "include_regex": "项目|名单|立项",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "project_stats_major_2025",
+      "category": "funded_project",
+      "name": "国家统计局｜2025重大统计专项正式立项",
+      "url": "https://www.stats.gov.cn/xw/tjxw/tzgg/202509/t20250902_1960975.html",
+      "mode": "detail",
+      "allowed_hosts": [
+        "www.stats.gov.cn"
+      ],
+      "include_regex": "专项|名单|立项",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "project_stats_major_2026",
+      "category": "funded_project",
+      "name": "国家统计局｜2026重大统计专项正式立项",
+      "url": "https://www.stats.gov.cn/xw/tjxw/tzgg/202609/t20260921_1965384.html",
+      "mode": "detail",
+      "allowed_hosts": [
+        "www.stats.gov.cn"
+      ],
+      "include_regex": "专项|名单|立项",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "conference_cea_2025",
+      "category": "conference_paper",
+      "name": "中国经济学年会｜2025入选论文公告",
+      "url": "https://www.efnchina.com/info/1101/58381.htm",
+      "mode": "detail",
+      "allowed_hosts": [
+        "www.efnchina.com"
+      ],
+      "include_regex": "论文|名单|议程",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "conference_cea_2026",
+      "category": "conference_paper",
+      "name": "中国经济学年会｜2026入选论文公告",
+      "url": "https://www.efnchina.com/info/1001/59751.htm",
+      "mode": "detail",
+      "allowed_hosts": [
+        "www.efnchina.com"
+      ],
+      "include_regex": "论文|名单|议程",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "conference_cfrc_2025",
+      "category": "conference_paper",
+      "name": "中国金融学术年会｜2025正式日程",
+      "url": "https://editorialexpress.com/conference/CFRC2025/program/CFRC2025.html",
+      "mode": "detail",
+      "allowed_hosts": [
+        "editorialexpress.com"
+      ],
+      "include_regex": "论文|议程|paper",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "conference_cfrc_2026",
+      "category": "conference_paper",
+      "name": "中国金融学术年会｜2026正式日程",
+      "url": "https://editorialexpress.com/conference/CFRC2026/program/CFRC2026.html",
+      "mode": "detail",
+      "allowed_hosts": [
+        "editorialexpress.com"
+      ],
+      "include_regex": "论文|议程|paper",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "conference_quant_2026",
+      "category": "conference_paper",
+      "name": "中国数量经济学会｜2026重庆承办单位报道",
+      "url": "https://cem.swu.edu.cn/info/1030/8509.htm",
+      "mode": "detail",
+      "allowed_hosts": [
+        "cem.swu.edu.cn"
+      ],
+      "include_regex": "论文|议程|名单|论坛",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    },
+    {
+      "id": "conference_quant_2026_detail",
+      "category": "conference_paper",
+      "name": "中国数量经济学会｜2026重庆论坛报道",
+      "url": "https://cem.swu.edu.cn/info/1311/8513.htm",
+      "mode": "detail",
+      "allowed_hosts": [
+        "cem.swu.edu.cn"
+      ],
+      "include_regex": "论文|议程|论坛",
+      "pagination_template": "",
+      "evidence": "official",
+      "max_pages": 12
+    }
+  ]
+}
