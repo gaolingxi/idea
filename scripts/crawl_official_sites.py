@@ -12,7 +12,8 @@ import re
 import sqlite3
 import time
 from collections import deque
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from urllib.parse import urljoin, urldefrag, urlparse
 from urllib.robotparser import RobotFileParser
@@ -386,7 +387,8 @@ def main():
     p.add_argument("--source-id",action="append")
     p.add_argument("--max-pages",type=int,default=5)
     p.add_argument("--max-details",type=int,default=60)
-    p.add_argument("--days",type=int,default=731)
+    p.add_argument("--days",type=int,default=None,
+                   help="Optional exact-day override; default is two calendar years")
     p.add_argument("--delay",type=float,default=2.0)
     p.add_argument("--attachments",action="store_true")
     args=p.parse_args()
@@ -394,14 +396,21 @@ def main():
     root=Path(args.db).parent
     db=db_open(args.db)
     fetcher=SiteFetcher(args.delay)
-    since=(date.today()-__import__("datetime").timedelta(days=args.days)).isoformat()
+    today=datetime.now(ZoneInfo("Asia/Tokyo")).date()
+    if args.days is not None:
+        since=(today-timedelta(days=args.days)).isoformat()
+    else:
+        try:
+            since=today.replace(year=today.year-2).isoformat()
+        except ValueError:  # leap day
+            since=today.replace(year=today.year-2,day=28).isoformat()
     results=[]
     for src in cfg["sources"]:
         if args.source_id and src["id"] not in args.source_id: continue
         results.append(crawl_source(src,fetcher,db,root,since,args))
     path=write_csv(db,root)
     report=root/"crawl_summary.json"
-    report.write_text(json.dumps({"window_start":since,"window_end":date.today().isoformat(),
+    report.write_text(json.dumps({"window_start":since,"window_end":today.isoformat(),
          "results":results,"documents_csv":path,"note":"Document records are source pages, not necessarily individual projects or papers; attachment table rows need verification."},
          ensure_ascii=False,indent=2),encoding="utf-8")
     print(report.read_text(encoding="utf-8"))
