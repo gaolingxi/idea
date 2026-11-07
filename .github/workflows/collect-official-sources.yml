@@ -1,0 +1,62 @@
+name: Collect official economic research source pages
+
+on:
+  push:
+    paths:
+      - '.github/workflows/collect-official-sources.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '35 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: official-site-scrape
+  cancel-in-progress: false
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install crawler
+        run: python -m pip install -r requirements-site-crawler.txt
+      - name: Archive official statistical award attachments (local to runner)
+        run: |
+          python scripts/crawl_official_sites.py --source-id project_stats_2025 --source-id project_stats_2026 --source-id project_stats_major_2025 --source-id project_stats_major_2026 --source-id conference_cea_2025_attachment --attachments --max-pages 1 --max-details 1
+      - name: Crawl project and conference source pages
+        run: |
+          python scripts/crawl_official_sites.py --source-id project_nopss_annual --source-id project_nopss_major --source-id project_nsfc_management --source-id project_csr --source-id conference_cea_2025 --source-id conference_cea_2026 --source-id conference_cea_news --source-id conference_cfrc_2025 --source-id conference_cfrc_2026 --source-id conference_quant_2026 --max-pages 2 --max-details 18
+      - name: Crawl policy listings and dated documents
+        run: |
+          python scripts/crawl_official_sites.py --source-id policy_mof --source-id policy_ndrc --source-id policy_mofcom --source-id policy_miit --max-pages 2 --max-details 18
+      - name: Merge public bibliographic metadata (not full text)
+        run: python scripts/merge_public_index.py
+      - name: Publish metadata-only incremental index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public_metadata/official_source_pages.csv
+          if git diff --staged --quiet; then
+            echo "No changes to public source index"
+          else
+            git commit -m "Update verified source page metadata (not individual paper counts)"
+            git push origin HEAD:main
+          fi
+      - name: Upload source crawl audit (never archive raw files publicly)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-source-run-audit
+          path: |
+            data/site_crawl/documents.csv
+            data/site_crawl/crawl_summary.json
+          if-no-files-found: warn
+          retention-days: 7
