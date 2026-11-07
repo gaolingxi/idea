@@ -1,7 +1,7 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "window_months": 24,
-  "source_count": 18,
+  "source_count": 21,
   "sources": [
     {
       "id": "policy_ndrc",
@@ -254,6 +254,48 @@
       "pagination_template": "",
       "evidence": "official",
       "max_pages": 12
+    },
+    {
+      "id": "conference_cea_2025_attachment",
+      "category": "conference_paper",
+      "name": "2025中国经济学年会191篇正式入选论文清单（Excel原附件）",
+      "url": "https://www.phbs.pku.edu.cn/file/2025/tuiwen.xlsx",
+      "mode": "attachment",
+      "allowed_hosts": [
+        "www.phbs.pku.edu.cn"
+      ],
+      "include_regex": "论文|论文题目|Paper",
+      "pagination_template": "",
+      "evidence": "official announcement linked file",
+      "max_pages": 1
+    },
+    {
+      "id": "conference_cea_news",
+      "category": "conference_paper",
+      "name": "中国经济学教育科研网｜年会新闻栏目",
+      "url": "https://www.efnchina.com/xj/xwdt.htm",
+      "mode": "listing",
+      "allowed_hosts": [
+        "www.efnchina.com"
+      ],
+      "include_regex": "年会|论文|入选|议程|学术会议",
+      "pagination_template": "",
+      "evidence": "official conference news",
+      "max_pages": 6
+    },
+    {
+      "id": "conference_cea_2026_university",
+      "category": "conference_paper",
+      "name": "2026年中国经济学年会｜华东理工大学商学院参会报道",
+      "url": "https://bs.ecust.edu.cn/cms/ecust/index/news/519361230077954.html",
+      "mode": "detail",
+      "allowed_hosts": [
+        "bs.ecust.edu.cn"
+      ],
+      "include_regex": "论文|年会",
+      "pagination_template": "",
+      "evidence": "official participant university",
+      "max_pages": 1
     }
   ]
 }
