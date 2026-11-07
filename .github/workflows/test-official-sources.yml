@@ -1,0 +1,28 @@
+name: Verify official source collector
+on:
+  push:
+    paths:
+      - 'scripts/crawl_official_sites.py'
+      - 'sources/site_registry.json'
+      - 'tests/test_site_crawler.py'
+      - 'requirements-site-crawler.txt'
+      - '.github/workflows/test-official-sources.yml'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install required packages
+        run: python -m pip install -r requirements-site-crawler.txt
+      - name: Syntax check
+        run: python -m py_compile scripts/crawl_official_sites.py
+      - name: Unit tests (offline)
+        run: python -m unittest discover -s tests -p 'test_site_crawler.py' -v
+      - name: Validate site registry
+        run: python -c "import json; p=json.load(open('sources/site_registry.json',encoding='utf-8')); assert len(p['sources']) >= 18; print(len(p['sources']))"
