@@ -19,7 +19,7 @@ class TestSiteCrawler(unittest.TestCase):
         self.assertTrue(site.allowed("https://jkw.mof.gov.cn/index.html",["mof.gov.cn"]))
         self.assertFalse(site.allowed("https://mof.gov.cn.attacker.com/",["mof.gov.cn"]))
     def test_h1(self):
-        soup,title,text=site.html_data(b'<html><body><h1>2026年度科研立项公告</h1><p>2026年9月8日</p></body></html>',"utf-8")
+        soup,title,text=site.html_data('<html><body><h1>2026年度科研立项公告</h1><p>2026年9月8日</p></body></html>'.encode('utf-8'),"utf-8")
         self.assertEqual(title,"2026年度科研立项公告")
         self.assertEqual(site.extract_dates(soup,text)[0],"2026-09-08")
 if __name__ == "__main__":
