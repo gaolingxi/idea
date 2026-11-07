@@ -46,7 +46,7 @@ def normalize(url):
 def allowed(url, hosts):
     host = (urlparse(url).hostname or "").lower()
     allowed_hosts = [h.lower() for h in hosts]
-    return host in allowed_hosts or (host.startswith("www.") and host[4:] in allowed_hosts)
+    return any(host == h or host.endswith("." + h) for h in allowed_hosts)
 
 
 def date_from(s):
@@ -170,7 +170,7 @@ def log(db, source_id, url, outcome, detail=""):
 
 
 def html_data(body, encoding):
-    soup = BeautifulSoup(body, "html.parser", from_encoding=encoding)
+    soup = BeautifulSoup(body, "html.parser", from_encoding=(None if str(encoding).lower() in ("iso-8859-1","latin-1","none") else encoding))
     # Site chrome is excluded where possible; keep full HTML only in local archive.
     for tag in soup.select("script,style,nav,footer,header"):
         tag.decompose()
