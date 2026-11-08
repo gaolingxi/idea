@@ -196,7 +196,7 @@
         "https://www.zjskw.gov.cn/api-gateway/jpaas-web-server/front/document/file-download?fileUrl=/cms_files/jcms1/web3764/site/attach/0/52c1bde1d86d409c9a1137fd8d0e4c30.pdf"
       ],
       "allowed_hosts": [
-        "www.zjskw.gov.cn"
+        "zjskw.gov.cn"
       ]
     },
     {
