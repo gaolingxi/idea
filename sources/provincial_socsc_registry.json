@@ -16,7 +16,13 @@
       "title_or_scope": "2025年北京市社会科学基金项目拟立项名单公示",
       "source_count_verified": 0,
       "full_list_verified": true,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [
+        "https://www.bjsk.org.cn/upload/202511/26/202511261532277595.pdf"
+      ],
+      "allowed_hosts": [
+        "www.bjsk.org.cn"
+      ]
     },
     {
       "code": "02",
@@ -29,7 +35,11 @@
       "title_or_scope": "天津市社科联通知公告栏目；2026年度正式/拟立项名单尚须逐页定位",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "www.tjskw.org.cn"
+      ]
     },
     {
       "code": "03",
@@ -42,7 +52,11 @@
       "title_or_scope": "河北社科院公告栏目；省社科基金全省名单尚待核验",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "www.hebsky.org.cn"
+      ]
     },
     {
       "code": "04",
@@ -55,7 +69,11 @@
       "title_or_scope": "2026年度山西省哲学社会科学规划课题申报；不是立项名单",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "keyan.xztu.edu.cn"
+      ]
     },
     {
       "code": "05",
@@ -68,7 +86,11 @@
       "title_or_scope": "内蒙古自治区社科规划冷门绝学专项正式立项；不代表年度全量",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "nmgskghw.nmgnews.com.cn"
+      ]
     },
     {
       "code": "06",
@@ -81,7 +103,9 @@
       "title_or_scope": "2026年度辽宁省社会科学规划基金拟立项公示，尚缺原始发布页",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站"
+      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站",
+      "direct_attachment_urls": [],
+      "allowed_hosts": []
     },
     {
       "code": "07",
@@ -94,7 +118,9 @@
       "title_or_scope": "2026年吉林省社科基金年度拟立项名单，尚缺原始发布页",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站"
+      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站",
+      "direct_attachment_urls": [],
+      "allowed_hosts": []
     },
     {
       "code": "08",
@@ -107,7 +133,11 @@
       "title_or_scope": "黑龙江社会科学规划网；2026立项名单待查",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "www.hljsk.gov.cn"
+      ]
     },
     {
       "code": "09",
@@ -120,7 +150,13 @@
       "title_or_scope": "2025年度上海市哲学社会科学规划课题立项名单公布",
       "source_count_verified": 0,
       "full_list_verified": true,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [
+        "https://www.sh-popss.gov.cn/url/2025%E5%B9%B4%E5%BA%A6%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%93%B2%E5%AD%A6%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6%E8%A7%84%E5%88%92%E8%AF%BE%E9%A2%98%E7%AB%8B%E9%A1%B9%E5%90%8D%E5%8D%95.pdf"
+      ],
+      "allowed_hosts": [
+        "www.sh-popss.gov.cn"
+      ]
     },
     {
       "code": "10",
@@ -133,7 +169,13 @@
       "title_or_scope": "2026年江苏省社科基金年度项目立项名单公布",
       "source_count_verified": 0,
       "full_list_verified": true,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [
+        "https://www.jsxc.gov.cn/zxsk/tzgg/202608/W020260826339836047537.pdf"
+      ],
+      "allowed_hosts": [
+        "www.jsxc.gov.cn"
+      ]
     },
     {
       "code": "11",
@@ -146,7 +188,11 @@
       "title_or_scope": "2026年度浙江省社科规划年度课题正式立项（于2025年公布）",
       "source_count_verified": 0,
       "full_list_verified": true,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "www.zjskw.gov.cn"
+      ]
     },
     {
       "code": "12",
@@ -159,7 +205,11 @@
       "title_or_scope": "安徽师范大学获批的53项2025年度省社科项目；不是全省完整名单",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "kyc.ahnu.edu.cn"
+      ]
     },
     {
       "code": "13",
@@ -172,7 +222,9 @@
       "title_or_scope": "2026年度福建省社科基金拟立项名单；仅发现非原始来源，待核实省社科联公告",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站"
+      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站",
+      "direct_attachment_urls": [],
+      "allowed_hosts": []
     },
     {
       "code": "14",
@@ -185,7 +237,9 @@
       "title_or_scope": "江西省社科基金地区项目拟立项；尚缺原始省社科联公告",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站"
+      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站",
+      "direct_attachment_urls": [],
+      "allowed_hosts": []
     },
     {
       "code": "15",
@@ -198,7 +252,14 @@
       "title_or_scope": "2026年山东省社会科学规划年度项目立项名单",
       "source_count_verified": 0,
       "full_list_verified": true,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [
+        "https://appimg.dzwww.com/dzcloud/20260930/7d244d9f8227335a50a257722101c0fe.pdf"
+      ],
+      "allowed_hosts": [
+        "www.sdxc.gov.cn",
+        "appimg.dzwww.com"
+      ]
     },
     {
       "code": "16",
@@ -211,7 +272,11 @@
       "title_or_scope": "郑州大学获批的89项河南省社科规划项目；不是全省完整名单",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "www5.zzu.edu.cn"
+      ]
     },
     {
       "code": "17",
@@ -224,7 +289,9 @@
       "title_or_scope": "2026年湖北省社科基金年度一般项目正式立项；尚缺官方原始发布页",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站"
+      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站",
+      "direct_attachment_urls": [],
+      "allowed_hosts": []
     },
     {
       "code": "18",
@@ -237,7 +304,11 @@
       "title_or_scope": "湖南省社科基金2025年度项目立项，学校转发省委正式通知附件",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "kyc.hnuit.edu.cn"
+      ]
     },
     {
       "code": "19",
@@ -250,7 +321,11 @@
       "title_or_scope": "广东省社科规划2026年990项正式名单；学校转发省委/省社科联公告含Excel",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "www.mmpt.edu.cn"
+      ]
     },
     {
       "code": "20",
@@ -263,7 +338,11 @@
       "title_or_scope": "2025年广西哲学社会科学研究年度课题拟立项名单（公开公告，不需登录）",
       "source_count_verified": 0,
       "full_list_verified": true,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "gxskjj.myclub2.com"
+      ]
     },
     {
       "code": "21",
@@ -276,7 +355,11 @@
       "title_or_scope": "海南高校官方报告2026年度33项省社科立项；非全省名单",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "www.hntou.edu.cn"
+      ]
     },
     {
       "code": "22",
@@ -289,7 +372,11 @@
       "title_or_scope": "2026年度重庆市社会科学规划年度项目正式立项；名单在图像中",
       "source_count_verified": 0,
       "full_list_verified": true,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "www.cqskl.com"
+      ]
     },
     {
       "code": "23",
@@ -302,7 +389,11 @@
       "title_or_scope": "2026年四川省社科基金年度项目立项；省区域科学学会转发",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "www.scrss.net"
+      ]
     },
     {
       "code": "24",
@@ -315,7 +406,11 @@
       "title_or_scope": "贵州省2026年社科规划申报公告；不是立项名单",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "hss.gzu.edu.cn"
+      ]
     },
     {
       "code": "25",
@@ -328,7 +423,13 @@
       "title_or_scope": "2025年云南省社科规划年度项目立项名单，25重点+98一般+64青年+23培育",
       "source_count_verified": 0,
       "full_list_verified": true,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [
+        "https://www.ynxc.gov.cn/uploadfile/s61/2025/0617/20250617100848690.pdf"
+      ],
+      "allowed_hosts": [
+        "www.ynxc.gov.cn"
+      ]
     },
     {
       "code": "26",
@@ -341,7 +442,9 @@
       "title_or_scope": "2026年自治区哲学社会科学专项资金项目拟立项，尚缺原始公示页",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站"
+      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站",
+      "direct_attachment_urls": [],
+      "allowed_hosts": []
     },
     {
       "code": "27",
@@ -354,7 +457,11 @@
       "title_or_scope": "西京学院2026年陕西省社科基金9项，省公布日9月28日；非全省名单",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "www.xijing.edu.cn"
+      ]
     },
     {
       "code": "28",
@@ -367,7 +474,11 @@
       "title_or_scope": "甘肃省社科联网站已出现2026年省人文社科拟立项公示，须定位列表附件",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "www.gsskl.gov.cn"
+      ]
     },
     {
       "code": "29",
@@ -380,7 +491,9 @@
       "title_or_scope": "青海省社科基金2025/2026正式立项原始链接待查",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站"
+      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站",
+      "direct_attachment_urls": [],
+      "allowed_hosts": []
     },
     {
       "code": "30",
@@ -393,7 +506,9 @@
       "title_or_scope": "宁夏社科规划2026年教育学拟立项名单；不等于全自治区年度项目",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站"
+      "notes": "尚缺可验证的一手省级公告地址，不抓非原始聚合站",
+      "direct_attachment_urls": [],
+      "allowed_hosts": []
     },
     {
       "code": "31",
@@ -406,7 +521,11 @@
       "title_or_scope": "新疆大学学院2026自治区社科基金6项，非全区完整名单",
       "source_count_verified": 0,
       "full_list_verified": false,
-      "notes": ""
+      "notes": "",
+      "direct_attachment_urls": [],
+      "allowed_hosts": [
+        "mks.xju.edu.cn"
+      ]
     }
   ]
 }
