@@ -21,6 +21,15 @@ jobs:
       - run: python -m pip install -r requirements-site-crawler.txt
       - name: Fetch four official PDF attachments and extract individual titles
         run: python scripts/collect_provincial_socsc.py --province 浙江 --delay 2
+      - name: Verify source actually yielded attachment rows
+        run: |
+          python - <<'PY'
+          import json
+          x=json.load(open('data/provincial_socsc/crawl_audit.json',encoding='utf-8'))['by_province'][0]
+          print('PDFS_FETCHED',x['pdfs_fetched'],'ROWS',x['rows_parsed'],'ERRORS',x['errors'])
+          if not x['pdfs_fetched'] or not x['rows_parsed']:
+              raise SystemExit('Source extraction incomplete; not a successful harvest')
+          PY
       - name: Commit deduplicated official rows
         run: |
           git config user.name "github-actions[bot]"
