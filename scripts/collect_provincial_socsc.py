@@ -75,7 +75,7 @@ def pdf_rows(pdf_file):
                     start=0
                 else:continue
                 for row in table[start:]:
-                    if not row or max(columns.values(),default=0) is None:continue
+                    if not row:continue
                     def cell(key):
                         ix=columns.get(key)
                         return clean(row[ix]) if ix is not None and ix<len(row) else ""
