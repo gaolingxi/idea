@@ -1,0 +1,59 @@
+name: Province-first social science funding project lists
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/collect-provincial-socsc.yml'
+permissions:
+  contents: write
+concurrency:
+  group: province-socsc-metadata
+  cancel-in-progress: false
+jobs:
+  initial-official-backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r requirements-site-crawler.txt
+      - name: Syntax checks
+        run: python -m py_compile scripts/collect_provincial_socsc.py
+      - name: Export official project metadata from five verified provincial PDFs
+        run: |
+          python scripts/collect_provincial_socsc.py --province 江苏 --province 山东 --province 云南 --province 上海 --province 北京 --delay 2
+      - name: Export 31-province source coverage
+        run: |
+          python - <<'PY'
+          import json,csv
+          from pathlib import Path
+          items=json.loads(Path('sources/provincial_socsc_registry.json').read_text(encoding='utf-8'))['provinces']
+          fields=['province','project_year','record_status','source_level','publication_date','source_url','title_or_scope','notes']
+          p=Path('public_metadata/provincial_socsc_sources.csv')
+          p.parent.mkdir(parents=True,exist_ok=True)
+          with p.open('w',encoding='utf-8-sig',newline='') as f:
+            w=csv.DictWriter(f,fieldnames=fields);w.writeheader()
+            w.writerows([{k:x.get(k,'') for k in fields} for x in items])
+          print('PROVINCES_REGISTERED',len(items))
+          PY
+      - name: Publish source index and provisional extracted metadata
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public_metadata/provincial_socsc_sources.csv public_metadata/provincial_socsc_projects.csv
+          if ! git diff --staged --quiet; then
+            git commit -m "Collect provincial society funding project metadata from official PDFs"
+            git push origin HEAD:main
+          fi
+      - name: Upload temporary audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: province-socsc-backfill-audit
+          path: |
+            data/provincial_socsc/crawl_audit.json
+          retention-days: 7
+          if-no-files-found: warn
