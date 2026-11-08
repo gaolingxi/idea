@@ -188,8 +188,13 @@
       "title_or_scope": "2026年度浙江省社科规划年度课题正式立项（于2025年公布）",
       "source_count_verified": 0,
       "full_list_verified": true,
-      "notes": "",
-      "direct_attachment_urls": [],
+      "notes": "2026课题年度于2025-10-28公布；文件明示正式立项时间2025-06-30；附件1-4分别为重大、常规、交叉及冷门绝学、高校基本科研业务费改革专项；已验证PDF下载入口",
+      "direct_attachment_urls": [
+        "https://www.zjskw.gov.cn/api-gateway/jpaas-web-server/front/document/file-download?fileUrl=/cms_files/jcms1/web3764/site/attach/0/fc85ae294896486e99bcfcb3642c3fc8.pdf",
+        "https://www.zjskw.gov.cn/api-gateway/jpaas-web-server/front/document/file-download?fileUrl=/cms_files/jcms1/web3764/site/attach/0/55d2da6b32b64aef990bd276d76a22fa.pdf",
+        "https://www.zjskw.gov.cn/api-gateway/jpaas-web-server/front/document/file-download?fileUrl=/cms_files/jcms1/web3764/site/attach/0/c8f730e00ee24c76a2f0630b74e3cd3a.pdf",
+        "https://www.zjskw.gov.cn/api-gateway/jpaas-web-server/front/document/file-download?fileUrl=/cms_files/jcms1/web3764/site/attach/0/52c1bde1d86d409c9a1137fd8d0e4c30.pdf"
+      ],
       "allowed_hosts": [
         "www.zjskw.gov.cn"
       ]
