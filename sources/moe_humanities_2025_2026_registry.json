@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "scope": "Education Ministry humanities social science public announced award/publicity PDFs 2025 and 2026; NOT National Social Science Fund",
-  "expected_counts_note": "2025 from MOE official 2025-11-29 notice; 2026 per official 2026-10-19 attachments, counts from secondary published tally require file verification",
+  "expected_counts_note": "2025 from MOE official 2025-11-29 notice; 2026 per official 2026-10-19 attachments, counts from secondary published tally require file verification; additional 2025 notices: 48 major humanities grants, 12 ideological major grants, 198 ideological teacher general grants",
   "groups": [
     {
       "id": "moe_2025_core",
@@ -151,6 +151,48 @@
       "allowed_hosts": [
         "www.moe.gov.cn",
         "moe.gov.cn"
+      ]
+    },
+    {
+      "id": "moe_2025_major_research",
+      "year": 2025,
+      "group": "major_research",
+      "status": "formal_award",
+      "expected": 48,
+      "pdf_url": "https://www.sinoss.net/upload/resources/file/2026/05/07/47063.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202605/t20260506_1435533.html",
+      "source_level": "MOE_research_management_sinoss_official_notice_attachment",
+      "allowed_hosts": [
+        "www.sinoss.net"
+      ]
+    },
+    {
+      "id": "moe_2025_major_ideological",
+      "year": 2025,
+      "group": "major_ideological_teaching",
+      "status": "formal_award",
+      "expected": 12,
+      "pdf_url": "https://www.sinoss.net/upload/resources/file/2026/05/07/47064.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202605/t20260506_1435533.html",
+      "source_level": "MOE_research_management_sinoss_official_notice_attachment",
+      "allowed_hosts": [
+        "www.sinoss.net"
+      ]
+    },
+    {
+      "id": "moe_2025_ideological_teacher_general",
+      "year": 2025,
+      "group": "ideological_teacher_general",
+      "status": "formal_award",
+      "expected": 198,
+      "pdf_url": "https://www.sinoss.net/upload/resources/file/2025/12/03/46573.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422101.html",
+      "source_level": "MOE_research_management_sinoss_official_notice_attachment",
+      "allowed_hosts": [
+        "www.sinoss.net"
       ]
     }
   ]
