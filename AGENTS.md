@@ -6,3 +6,9 @@
 - 小红书采集必须具备明确的合法许可，不绕过登录、验证码、403/429、robots 或平台服务协议；没有权限则停止并报告。
 - 缺失发布日期不能视为过去24个月有效样本。
 - 需要时渐进阅读：`OPENCODE_TASK.md` → `scripts/xhs_approved_ingest.py` → `OPENCODE_REPORT.md`。
+
+## 公开科研名单附件的本地执行器转交规则
+- 若ChatGPT云端检索只能看到官方公告但无法取得其公开PDF/Excel真实下载链接，先核验公告来源，再编写**限定单一来源的OpenCode任务与现成脚本**，放在独立任务文件中，不覆盖其他根任务。
+- OpenCode负责在本地授权、正常网络条件下运行脚本并记录真实下载URL、结果、附件数量及表格逐题提取数；ChatGPT负责后续核验和脚本修订。
+- 文件使用项目内`data/`和`logs/`；一律不绕过robots、403/429、验证码、登录等权限限制。抓不到就明确报告BLOCKED。不能把拟立项公示冒充正式立项。
+- 每条本地任务必须维护对应`OPENCODE_TASK_*.md`与`OPENCODE_REPORT_*.md`；本地连接离线时状态只可标记READY/NOT_RUN，不能声称OpenCode已执行。
