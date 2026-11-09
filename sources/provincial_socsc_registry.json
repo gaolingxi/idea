@@ -1,9 +1,8 @@
 {
   "version": "2026-11-09-v1",
   "scope": "31 provincial-level administrative regions on mainland China, excluding Hong Kong Macao Taiwan",
-  "date_window": "2024-11-09..2026-11-09",
-  "phase": "provincial_first",
-  "national_phase": "NOT_STARTED; after provincial lists",
+  "phase": "parallel_hourly_provincial_and_national_collection",
+  "national_phase": "ACTIVE_AS_SEPARATE_DATASET; see public_metadata/grant_source_notices.csv and national_grant_project_candidates.csv",
   "provinces": [
     {
       "code": "01",
@@ -532,5 +531,6 @@
         "mks.xju.edu.cn"
       ]
     }
-  ]
+  ],
+  "window_rule": "rolling previous two calendar years, Asia/Tokyo"
 }
