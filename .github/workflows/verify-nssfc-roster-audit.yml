@@ -29,7 +29,7 @@ jobs:
           spec=importlib.util.spec_from_file_location('audit',f)
           m=importlib.util.module_from_spec(spec)
           spec.loader.exec_module(m)
-          row=['序号','涉及学科','课题名称','负责人','依托单位']
+          row=['序号','涉及学科','课题名称','申请人','依托单位']
           index, cols=m.header_map([row,['1','应用经济学','示例题目研究','张某','示例单位']])
           assert index==0
           assert cols=={'list_sequence':0,'discipline':1,'title':2,'person':3,'unit':4},cols
