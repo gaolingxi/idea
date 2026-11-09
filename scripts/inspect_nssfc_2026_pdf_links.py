@@ -22,7 +22,9 @@ from bs4 import BeautifulSoup
 from crawl_official_sites import SiteFetcher
 
 PAGE = "https://fgc.suse.edu.cn/2026/1010/c5016a217143/page.htm"
-# Verified in the 2026-11-09 local report: four PDFs linked directly from the university notice\n# are served on the public People.cn download host. No other external hosts permitted.\nALLOWED_HOSTS = ["suse.edu.cn", "download.people.com.cn"]
+# The SUSE notice directly links four public PDFs on the verified People.cn download host.
+# Only the university and that specific download host are allowed.
+ALLOWED_HOSTS = ["suse.edu.cn", "download.people.com.cn"]
 CATEGORIES = {"重点": "key", "一般": "general", "青年": "young", "西部": "western"}
 FIELDS = [
     "project_category", "project_title", "project_id", "principal_investigator",
