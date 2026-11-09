@@ -1,0 +1,126 @@
+{
+  "result": "PASSED_FULL_6065_PUBLICITY_RECORDS",
+  "verified_at": "2026-11-09T23:52:38.333464+09:00",
+  "source_notice": "https://fgc.suse.edu.cn/2026/1010/c5016a217143/page.htm",
+  "status": "proposed_not_final_award",
+  "total_publicity_rows": 6065,
+  "public_titles": 5931,
+  "title_omitted_rows": 134,
+  "prior_5931_candidates_exact_match": true,
+  "categories": {
+    "key": {
+      "expected": 444,
+      "extracted": 444,
+      "published_titles": 439,
+      "titles_not_public": 5,
+      "pages": 18,
+      "examples": [
+        [
+          "1",
+          "习近平文化思想的标识性概念研究",
+          "马明冲",
+          "山东大学"
+        ],
+        [
+          "2",
+          "习近平文化思想引领提升中华文明传播力影响力研究",
+          "张蕴",
+          "四川外国语大学"
+        ],
+        [
+          "3",
+          "习近平文化思想的思政引领力研究",
+          "孙立军",
+          "哈尔滨师范大学"
+        ]
+      ],
+      "source_pdf": "https://download.people.com.cn/yunying2/twentyfive17914600301.pdf"
+    },
+    "general": {
+      "expected": 2705,
+      "extracted": 2705,
+      "published_titles": 2657,
+      "titles_not_public": 48,
+      "pages": 109,
+      "examples": [
+        [
+          "1",
+          "习近平总书记关于掌握历史主动重要论述的原创性贡献研究",
+          "虞志坚",
+          "浙江万里学院"
+        ],
+        [
+          "2",
+          "习近平总书记关于历史耐心重要论述的体系化学理化研究",
+          "申治安",
+          "中原工学院"
+        ],
+        [
+          "3",
+          "习近平总书记关于推进祖国统一大业的重要论述研究",
+          "党利奎",
+          "武汉大学"
+        ]
+      ],
+      "source_pdf": "https://download.people.com.cn/yunying2/twentyfive17914600601.pdf"
+    },
+    "young": {
+      "expected": 2350,
+      "extracted": 2350,
+      "published_titles": 2293,
+      "titles_not_public": 57,
+      "pages": 95,
+      "examples": [
+        [
+          "1",
+          "习近平党建思想标识性概念研究",
+          "郭小铭",
+          "西安交通大学"
+        ],
+        [
+          "2",
+          "习近平文化思想的原创性贡献研究",
+          "张晓旭",
+          "国防科技大学"
+        ],
+        [
+          "3",
+          "习近平总书记关于树立和践行正确政绩观重要论述的学理化研究",
+          "张齐",
+          "南京信息工程大学"
+        ]
+      ],
+      "source_pdf": "https://download.people.com.cn/yunying2/twentyfive17914600921.pdf"
+    },
+    "western": {
+      "expected": 566,
+      "extracted": 566,
+      "published_titles": 542,
+      "titles_not_public": 24,
+      "pages": 23,
+      "examples": [
+        [
+          "1",
+          "习近平总书记关于“中国—中亚精神”重要论述研究",
+          "折祎",
+          "西北师范大学"
+        ],
+        [
+          "2",
+          "新时代中国共产党关于国家战略腹地建设的理论探索研究",
+          "张子昂",
+          "四川轻化工大学"
+        ],
+        [
+          "3",
+          "习近平文化思想引领边疆地区乡村文化治理研究",
+          "曹军锋",
+          "甘肃政法大学"
+        ]
+      ],
+      "source_pdf": "https://download.people.com.cn/yunying2/twentyfive17914601111.pdf"
+    }
+  },
+  "output_csv": "public_metadata\\national_socsc_2026_annual_proposed.csv",
+  "note": "Serial numbers are not award IDs. All 6065 rows are publicity-stage, not confirmed funded awards."
+}
