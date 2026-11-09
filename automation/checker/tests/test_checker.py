@@ -5,6 +5,7 @@ from pathlib import Path
 import tempfile
 import time
 import unittest
+from unittest import mock
 
 HERE = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location("canonical_checker", HERE / "checker.py")
@@ -51,6 +52,43 @@ class CheckerTemplateTests(unittest.TestCase):
             path.write_text(json.dumps({"pid": os.getpid(), "created_epoch": time.time()}), encoding="utf-8")
             lock = checker.LeaseLock(path, stale_seconds=180)
             self.assertFalse(lock.acquire())
+
+    def test_orca_list_fallback_never_sends_to_other_repo(self):
+        with tempfile.TemporaryDirectory() as d:
+            idea = Path(d) / "idea"
+            other = Path(d) / "consump"
+            idea.mkdir()
+            other.mkdir()
+
+            def response(repo, args, timeout=30):
+                if "--worktree" in args:
+                    raise checker.NotReady("ORCA_CLI_FAILED:unknown_option")
+                return {"ok": True, "result": {"terminals": [
+                    {"handle": "other", "agentIdentity": "opencode",
+                     "connected": True, "writable": True, "worktreePath": str(other)},
+                    {"handle": "mine", "agentIdentity": "opencode",
+                     "connected": True, "writable": True, "worktreePath": str(idea)}
+                ]}}
+
+            with mock.patch.object(checker, "orca_json", side_effect=response):
+                self.assertEqual(checker.choose_terminal(idea, None), "mine")
+
+            def only_other(repo, args, timeout=30):
+                if "--worktree" in args:
+                    raise checker.NotReady("ORCA_CLI_FAILED:unknown_option")
+                return {"ok": True, "result": {"terminals": [
+                    {"handle": "other", "agentIdentity": "opencode",
+                     "connected": True, "writable": True, "worktreePath": str(other)}
+                ]}}
+
+            with mock.patch.object(checker, "orca_json", side_effect=only_other):
+                with self.assertRaisesRegex(checker.NotReady, "ORCA_OPENCODE_NOT_FOUND"):
+                    checker.choose_terminal(idea, None)
+
+    def test_orca_cli_failure_reports_safe_code(self):
+        with mock.patch.object(checker, "orca_raw", return_value=(1, {"ok":False,"error":{"code":"invalid_arguments","message":"secret local path"}})):
+            with self.assertRaisesRegex(checker.NotReady, "^ORCA_CLI_FAILED:invalid_arguments$"):
+                checker.orca_json(Path("."), ["terminal","list"])
 
 
 if __name__ == "__main__":
