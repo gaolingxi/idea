@@ -127,7 +127,10 @@ def main():
     try: start=today.replace(year=today.year-2).isoformat()
     except ValueError:start=today.replace(year=today.year-2,day=28).isoformat()
     end=today.isoformat()
-    source_list=NATIONAL+list(province_sources(args.prov_registry))+list(supplemental_official_sources())
+    # User closed the national social-science branch after the 2026 6065-row roster.
+    # Preserve existing historical notice data, but stop new national_socsc polling.
+    source_list=[v for v in (NATIONAL+list(province_sources(args.prov_registry))
+                 +list(supplemental_official_sources())) if v["scheme"]!="national_socsc"]
     fetcher=SiteFetcher(min_delay=args.delay,timeout=16)
     dst=Path(args.output)
     all_rows={}
