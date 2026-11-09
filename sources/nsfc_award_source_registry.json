@@ -1,0 +1,59 @@
+{
+  "description": "Curated, publicly accessible institution-issued NSFC award lists, not nationwide coverage. Raw awarded-project titles/approval numbers must be verified row by row.",
+  "year_window": [
+    2025,
+    2026
+  ],
+  "official_funder_notice": "https://www.nsfc.gov.cn/p1/3381/2822/141011.html",
+  "open_search_portal": "https://kd.nsfc.cn/",
+  "sources": [
+    {
+      "id": "hust_economics_2026",
+      "year": 2026,
+      "institution": "华中科技大学",
+      "unit": "经济学院",
+      "url": "https://eco.hust.edu.cn/info/1055/13283.htm",
+      "allowed_hosts": [
+        "eco.hust.edu.cn"
+      ],
+      "priority": "management_economics",
+      "min_rows": 1
+    },
+    {
+      "id": "nankai_economics_2026",
+      "year": 2026,
+      "institution": "南开大学",
+      "unit": "经济学院",
+      "url": "https://economics.nankai.edu.cn/2026/0827/c15998a601524/page.htm",
+      "allowed_hosts": [
+        "economics.nankai.edu.cn"
+      ],
+      "priority": "management_economics",
+      "min_rows": 1
+    },
+    {
+      "id": "hunnu_physics_2026",
+      "year": 2026,
+      "institution": "湖南师范大学",
+      "unit": "物理与电子科学学院",
+      "url": "https://wdy.hunnu.edu.cn/info/1041/9685.htm",
+      "allowed_hosts": [
+        "wdy.hunnu.edu.cn"
+      ],
+      "priority": "other_discipline",
+      "min_rows": 1
+    },
+    {
+      "id": "hunnu_physics_2025",
+      "year": 2025,
+      "institution": "湖南师范大学",
+      "unit": "物理与电子科学学院",
+      "url": "https://wdy.hunnu.edu.cn/info/1041/9024.htm",
+      "allowed_hosts": [
+        "wdy.hunnu.edu.cn"
+      ],
+      "priority": "other_discipline",
+      "min_rows": 1
+    }
+  ]
+}
