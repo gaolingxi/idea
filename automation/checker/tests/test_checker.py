@@ -90,6 +90,50 @@ class CheckerTemplateTests(unittest.TestCase):
             with self.assertRaisesRegex(checker.NotReady, "^ORCA_CLI_FAILED:invalid_arguments$"):
                 checker.orca_json(Path("."), ["terminal","list"])
 
+    def test_explicit_parent_workspace_matches_only_idea(self):
+        with tempfile.TemporaryDirectory() as d:
+            idea = Path(d) / "idea"
+            root = idea / "repo"
+            root.mkdir(parents=True)
+            sibling = Path(d) / "consump"
+            sibling.mkdir()
+
+            def response(repo, args, timeout=30):
+                if "--worktree" in args:
+                    selected = args[args.index("--worktree") + 1].split("path:", 1)[1]
+                    terms = [
+                        {"handle": "idea-parent", "agentIdentity": "opencode",
+                         "connected": True, "writable": True, "orphaned": False,
+                         "worktreePath": str(idea)},
+                        {"handle": "consump", "agentIdentity": "opencode",
+                         "connected": True, "writable": True, "orphaned": False,
+                         "worktreePath": str(sibling)}
+                    ]
+                    # Even a buggy unfiltered Orca reply cannot cross project boundaries.
+                    return {"ok": True, "result": {"terminals": terms}}
+                return {"ok": True, "result": {"terminals": []}}
+            with mock.patch.object(checker, "orca_json", side_effect=response):
+                with self.assertRaisesRegex(checker.NotReady, "ORCA_OPENCODE_NOT_FOUND"):
+                    checker.choose_terminal(root, None)
+                self.assertEqual(checker.choose_terminal(root, None, idea), "idea-parent")
+
+    def test_two_valid_idea_opencode_terminals_are_ambiguous(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d) / "idea" / "repo"
+            root.mkdir(parents=True)
+            idea = root.parent
+            def response(repo, args, timeout=30):
+                if "--worktree" in args and str(idea) in args[args.index("--worktree")+1]:
+                    return {"ok": True, "result": {"terminals": [
+                        {"handle": handle, "agentIdentity": "opencode", "connected": True,
+                         "writable": True, "worktreePath": str(idea)} for handle in ("a", "b")
+                    ]}}
+                return {"ok": True, "result": {"terminals": []}}
+            with mock.patch.object(checker, "orca_json", side_effect=response):
+                with self.assertRaisesRegex(checker.NotReady, "ORCA_OPENCODE_AMBIGUOUS"):
+                    checker.choose_terminal(root, None, idea)
+                self.assertEqual(checker.choose_terminal(root, "b", idea), "b")
+
 
 if __name__ == "__main__":
     unittest.main()
