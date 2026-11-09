@@ -1,5 +1,5 @@
 TASK_ID: IDEA_NSSFC_2026_SU_SE_PDF_LINKS_V1
-TASK_VERSION: 2
+TASK_VERSION: 3
 STATUS: PENDING
 EXECUTOR: OPENCODE
 NEXT_ACTOR: OPENCODE
@@ -8,7 +8,7 @@ AUTOMATION_REQUIRED_FILES: OPENCODE_TASK_NSSFC_2026_PDF.md;scripts/inspect_nssfc
 
 # idea 自动领取任务（调度入口）
 
-本版本仅修复已核验的公开附件承载域 `download.people.com.cn` 白名单；重新执行同一公告4份PDF，不得把拟立项计为正式立项。
+版本3修复白名单声明被意外注释的代码问题；已限定允许访问大学公告域和经核验的 `download.people.com.cn`，重新执行4份PDF下载、逐题提取和抽查；拟立项不得计为正式立项。
 
 收到 Orca 的“继续”后，在 `gaolingxi/idea` **本项目根目录**执行：
 
