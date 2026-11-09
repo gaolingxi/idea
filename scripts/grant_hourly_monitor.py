@@ -26,6 +26,8 @@ NATIONAL=[
   "hosts":["www.nopss.gov.cn"],"source_level":"national_program_office"},
  {"id":"national_socsc_major","scheme":"national_socsc","url":"https://www.nopss.gov.cn/GB/219469/431028/index.html",
   "hosts":["www.nopss.gov.cn"],"source_level":"national_program_office"},
+ {"id":"national_socsc_special","scheme":"national_socsc","url":"https://www.nopss.gov.cn/GB/219469/431029/index.html",
+  "hosts":["www.nopss.gov.cn"],"source_level":"national_program_office"},
  {"id":"national_socsc_root","scheme":"national_socsc","url":"https://www.nopss.gov.cn/GB/219469/",
   "hosts":["www.nopss.gov.cn"],"source_level":"national_program_office"},
  {"id":"nsfc_management","scheme":"nsfc","url":"https://www.nsfc.gov.cn/p1/2857/3203/glkxbtzgg.html",
