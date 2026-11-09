@@ -1,0 +1,23 @@
+{
+  "source_id": "xmu_economics_2026",
+  "year": 2026,
+  "publisher": "厦门大学经济学院",
+  "publication_date": "2026-08-27",
+  "source_url": "https://soe.xmu.edu.cn/info/6411/1066315.htm",
+  "source_level": "university_official_partial_award_list",
+  "reported_awards": 23,
+  "types": {
+    "面上项目": 9,
+    "青年科学基金项目（C类）": 14
+  },
+  "available_fields": [
+    "project_title",
+    "principal_investigator",
+    "approval_number",
+    "project_type",
+    "funding_amount"
+  ],
+  "new_imported_rows": 0,
+  "status": "source_verified_pending_rowwise_dedup",
+  "note": "University partial list only. Do not modify frozen NSSFC data."
+}
