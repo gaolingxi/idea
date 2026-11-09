@@ -1,7 +1,7 @@
 {
   "version": "1.1",
   "window_months": 24,
-  "source_count": 21,
+  "source_count": 22,
   "sources": [
     {
       "id": "policy_ndrc",
@@ -296,6 +296,20 @@
       "pagination_template": "",
       "evidence": "official participant university",
       "max_pages": 1
+    },
+    {
+      "id": "project_nopss_special",
+      "category": "funded_project",
+      "name": "全国哲学社会科学工作办公室｜专项工程正式立项公告",
+      "url": "https://www.nopss.gov.cn/GB/219469/431029/index.html",
+      "mode": "listing",
+      "allowed_hosts": [
+        "www.nopss.gov.cn"
+      ],
+      "include_regex": "立项|名单|项目|公告|专项|课题|招标|资助|公示",
+      "pagination_template": "",
+      "evidence": "national social science office official",
+      "max_pages": 4
     }
   ]
 }
