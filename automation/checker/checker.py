@@ -280,7 +280,11 @@ def orca_raw(repo: Path, args: list[str], timeout: float = 30) -> tuple[int, dic
 def orca_json(repo: Path, args: list[str], timeout: float = 30) -> dict[str, Any]:
     rc, payload = orca_raw(repo, args, timeout)
     if rc != 0 or payload.get("ok") is not True:
-        raise NotReady("ORCA_CLI_FAILED")
+        detail = payload.get("error") if isinstance(payload, dict) else None
+        code = str(detail.get("code") or "") if isinstance(detail, dict) else ""
+        # Only publish an API error code: never expose local paths, tokens, or raw stderr.
+        code = re.sub(r"[^A-Za-z0-9_-]", "", code)[:45]
+        raise NotReady("ORCA_CLI_FAILED" + (":" + code if code else ":NO_ERROR_CODE"))
     return payload
 
 
@@ -291,7 +295,20 @@ def same_path(value: str | None, target: Path) -> bool:
 
 
 def choose_terminal(repo: Path, preferred: str | None) -> str:
-    payload = orca_json(repo, ["terminal", "list", "--worktree", f"path:{repo}", "--limit", "20"])
+    try:
+        payload = orca_json(repo, ["terminal", "list", "--worktree", f"path:{repo}", "--limit", "20"])
+    except NotReady as original_error:
+        if not str(original_error).startswith("ORCA_CLI_FAILED"):
+            raise
+        # The Orca CLI version might reject --worktree. Read-only list fallback;
+        # all candidate terminals are STILL filtered by exact local worktree below.
+        try:
+            payload = orca_json(repo, ["terminal", "list", "--limit", "20"])
+        except NotReady as fallback_error:
+            raise NotReady(
+                "ORCA_LIST_UNAVAILABLE:filtered=" + str(original_error).split(":")[-1]
+                + ";fallback=" + str(fallback_error).split(":")[-1]
+            ) from fallback_error
     terms = payload.get("result", {}).get("terminals", [])
     candidates = [
         t for t in terms
