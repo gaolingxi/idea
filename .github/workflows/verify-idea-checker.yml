@@ -1,0 +1,53 @@
+name: Verify idea Orca OpenCode checker
+on:
+  push:
+    paths:
+      - 'automation/checker/**'
+      - 'CURRENT_TASK.md'
+      - 'OPENCODE_TASK_AUTORUN.md'
+      - 'OPENCODE_REPORT_AUTORUN.md'
+      - '.github/workflows/verify-idea-checker.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: windows-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify Windows checker template and tests (read-only)
+        shell: pwsh
+        run: |
+          ./automation/checker/verify_template.ps1
+      - name: Verify idea-only task routing and gate
+        shell: pwsh
+        run: |
+          @'
+          import json, pathlib, re
+          root = pathlib.Path('.')
+          cfg = json.loads((root/'automation/checker/config.json').read_text(encoding='utf-8'))
+          assert cfg['repository_slug'] == 'gaolingxi/idea'
+          assert cfg['poll_minutes'] == 10
+          assert cfg['task_file'] == 'OPENCODE_TASK_AUTORUN.md'
+          assert cfg['current_task_file'] == 'CURRENT_TASK.md'
+          assert cfg['report_file'] == 'OPENCODE_REPORT_AUTORUN.md'
+          def head(path):
+              txt=(root/path).read_text(encoding='utf-8')
+              return dict(re.findall(r'(?m)^([A-Z][A-Z0-9_]*)\s*[:=]\s*([^\r\n]+)',txt))
+          cur=head(cfg['current_task_file'])
+          task=head(cfg['task_file'])
+          for f in ['TASK_ID','TASK_VERSION','STATUS','EXECUTOR','NEXT_ACTOR','AUTOMATION_READY','AUTOMATION_REQUIRED_FILES']:
+              assert cur[f] == task[f], (f,cur.get(f),task.get(f))
+          assert cur['STATUS']=='PENDING'
+          assert cur['AUTOMATION_READY']=='YES'
+          for p in cur['AUTOMATION_REQUIRED_FILES'].split(';'):
+              assert (root/p).is_file(), p
+          assert (root/'OPENCODE_TASK.md').exists()
+          print('IDEA_CHECKER_GATE_AND_SCOPE_PASS')
+          '@ | python -
