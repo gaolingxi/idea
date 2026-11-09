@@ -1,0 +1,60 @@
+{
+  "date_checked": "2026-11-09",
+  "scope": "Official-source additions outside existing 31-province primary record; source records, not item-level awards",
+  "entries": [
+    {
+      "scheme": "provincial_socsc",
+      "province": "宁夏",
+      "project_year": 2025,
+      "discipline": "艺术学",
+      "record_status": "formal_announcement",
+      "source_level": "autonomous_region_culture_tourism_department",
+      "publication_date": "2025-11-28",
+      "publisher": "宁夏回族自治区文化和旅游厅",
+      "title": "关于2025年自治区哲学社会科学规划项目（艺术学）立项的通知",
+      "source_url": "https://whhlyt.nx.gov.cn/zwgk/fdzdgknr/tzgg/202511/t20251128_5094778.html",
+      "announced_project_count": 25,
+      "verified_individual_project_titles": 0,
+      "notes": "官方正文明确25项正式立项；仍需从正式名单附件逐题核验，不能将25项计为已入库题目。此前同批2025-11-10公示不得重复计数。",
+      "allowed_hosts": [
+        "whhlyt.nx.gov.cn"
+      ]
+    },
+    {
+      "scheme": "provincial_socsc",
+      "province": "宁夏",
+      "project_year": 2025,
+      "discipline": "教育学",
+      "record_status": "proposed",
+      "source_level": "autonomous_region_education_department",
+      "publication_date": "2025-11-07",
+      "publisher": "宁夏回族自治区教育厅/宁夏教育科学研究所",
+      "title": "2025年度宁夏哲学社会科学（教育学）规划项目拟立项名单公示",
+      "source_url": "https://jyt.nx.gov.cn/xwdt/tzgg/202511/t20251107_5078481.html",
+      "announced_project_count": null,
+      "verified_individual_project_titles": 0,
+      "notes": "官方附件PDF存在；仅拟立项，待正式批准通知。",
+      "allowed_hosts": [
+        "jyt.nx.gov.cn"
+      ]
+    },
+    {
+      "scheme": "provincial_socsc",
+      "province": "宁夏",
+      "project_year": 2025,
+      "discipline": "艺术学",
+      "record_status": "proposed",
+      "source_level": "autonomous_region_culture_tourism_department",
+      "publication_date": "2025-11-10",
+      "publisher": "宁夏回族自治区文化和旅游厅",
+      "title": "关于2025年度宁夏哲学社会科学规划项目（艺术学）拟立项名单的公示",
+      "source_url": "https://whhlyt.nx.gov.cn/zwgk/fdzdgknr/tzgg/202511/t20251110_5079245.html",
+      "announced_project_count": 25,
+      "verified_individual_project_titles": 0,
+      "notes": "与2025-11-28正式立项通知属同批项目，按项目编号或题目去重。",
+      "allowed_hosts": [
+        "whhlyt.nx.gov.cn"
+      ]
+    }
+  ]
+}
