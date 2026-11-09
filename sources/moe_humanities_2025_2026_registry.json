@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "scope": "Education Ministry humanities social science public announced award/publicity PDFs 2025 and 2026; NOT National Social Science Fund",
+  "expected_counts_note": "2025 from MOE official 2025-11-29 notice; 2026 per official 2026-10-19 attachments, counts from secondary published tally require file verification",
+  "groups": [
+    {
+      "id": "moe_2025_core",
+      "year": 2025,
+      "group": "general_plan_youth_self_funded",
+      "status": "formal_award",
+      "expected": 2817,
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021719419679.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "source_level": "moe_official_notice_attachment_copied_by_tech_net",
+      "allowed_hosts": [
+        "www.tech.net.cn",
+        "www2.tech.net.cn"
+      ]
+    },
+    {
+      "id": "moe_2025_western",
+      "year": 2025,
+      "group": "western_border",
+      "status": "formal_award",
+      "expected": 188,
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720003586.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "source_level": "moe_official_notice_attachment_copied_by_tech_net",
+      "allowed_hosts": [
+        "www.tech.net.cn",
+        "www2.tech.net.cn"
+      ]
+    },
+    {
+      "id": "moe_2025_xinjiang",
+      "year": 2025,
+      "group": "xinjiang",
+      "status": "formal_award",
+      "expected": 13,
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720078745.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "source_level": "moe_official_notice_attachment_copied_by_tech_net",
+      "allowed_hosts": [
+        "www.tech.net.cn",
+        "www2.tech.net.cn"
+      ]
+    },
+    {
+      "id": "moe_2025_tibet",
+      "year": 2025,
+      "group": "tibet",
+      "status": "formal_award",
+      "expected": 1,
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720164837.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "source_level": "moe_official_notice_attachment_copied_by_tech_net",
+      "allowed_hosts": [
+        "www.tech.net.cn",
+        "www2.tech.net.cn"
+      ]
+    },
+    {
+      "id": "moe_2025_theory",
+      "year": 2025,
+      "group": "special_socialism_theory",
+      "status": "formal_award",
+      "expected": 36,
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720228747.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "source_level": "moe_official_notice_attachment_copied_by_tech_net",
+      "allowed_hosts": [
+        "www.tech.net.cn",
+        "www2.tech.net.cn"
+      ]
+    },
+    {
+      "id": "moe_2025_counselor",
+      "year": 2025,
+      "group": "special_counselor",
+      "status": "formal_award",
+      "expected": 212,
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720331558.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "source_level": "moe_official_notice_attachment_copied_by_tech_net",
+      "allowed_hosts": [
+        "www.tech.net.cn",
+        "www2.tech.net.cn"
+      ]
+    },
+    {
+      "id": "moe_2026_core",
+      "year": 2026,
+      "group": "general_plan_youth",
+      "status": "public_review_not_formal_award",
+      "expected": 2533,
+      "pdf_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392128445.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/t20261019_1455204.html",
+      "source_level": "moe_official_pdf",
+      "allowed_hosts": [
+        "www.moe.gov.cn",
+        "moe.gov.cn"
+      ]
+    },
+    {
+      "id": "moe_2026_western",
+      "year": 2026,
+      "group": "western_border",
+      "status": "public_review_not_formal_award",
+      "expected": 165,
+      "pdf_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392131620.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/t20261019_1455204.html",
+      "source_level": "moe_official_pdf",
+      "allowed_hosts": [
+        "www.moe.gov.cn",
+        "moe.gov.cn"
+      ]
+    },
+    {
+      "id": "moe_2026_xinjiang",
+      "year": 2026,
+      "group": "xinjiang",
+      "status": "public_review_not_formal_award",
+      "expected": 14,
+      "pdf_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392141199.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/t20261019_1455204.html",
+      "source_level": "moe_official_pdf",
+      "allowed_hosts": [
+        "www.moe.gov.cn",
+        "moe.gov.cn"
+      ]
+    },
+    {
+      "id": "moe_2026_tibet",
+      "year": 2026,
+      "group": "tibet",
+      "status": "public_review_not_formal_award",
+      "expected": 1,
+      "pdf_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392145629.pdf",
+      "publisher": "教育部社会科学司",
+      "notice_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/t20261019_1455204.html",
+      "source_level": "moe_official_pdf",
+      "allowed_hosts": [
+        "www.moe.gov.cn",
+        "moe.gov.cn"
+      ]
+    }
+  ]
+}
