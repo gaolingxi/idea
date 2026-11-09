@@ -6,6 +6,7 @@ on:
       - 'CURRENT_TASK.md'
       - 'OPENCODE_TASK_AUTORUN.md'
       - 'OPENCODE_REPORT_AUTORUN.md'
+      - 'scripts/inspect_nssfc_2026_pdf_links.py'
       - '.github/workflows/verify-idea-checker.yml'
   workflow_dispatch:
 
@@ -50,4 +51,19 @@ jobs:
               assert (root/p).is_file(), p
           assert (root/'OPENCODE_TASK.md').exists()
           print('IDEA_CHECKER_GATE_AND_SCOPE_PASS')
+          '@ | python -
+      - name: Verify PDF host allowance is a real Python assignment
+        shell: pwsh
+        run: |
+          @'
+          import ast
+          from pathlib import Path
+          p = Path("scripts/inspect_nssfc_2026_pdf_links.py")
+          program = ast.parse(p.read_text(encoding="utf-8"))
+          found = [a for a in program.body if isinstance(a, ast.Assign)
+                   and any(isinstance(t, ast.Name) and t.id=="ALLOWED_HOSTS" for t in a.targets)]
+          assert len(found)==1, "ALLOWED_HOSTS missing or accidentally commented out"
+          allowed = ast.literal_eval(found[0].value)
+          assert set(allowed)=={"suse.edu.cn", "download.people.com.cn"}, allowed
+          print("PDF_HOST_ALLOWLIST_RUNTIME_DECLARATION_PASS")
           '@ | python -
