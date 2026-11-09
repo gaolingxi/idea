@@ -19,7 +19,7 @@ from crawl_official_sites import SiteFetcher, date_from, html_data, extract_date
 HEADERS=["scheme","province","source_id","source_level","notice_title",
          "notice_url","publication_date","record_status","source_page",
          "first_seen","evidence_scope"]
-GRANT=re.compile(r"社科|哲学社会|基金|研究|资助|立项|规划|课题|项目|重大专项|评审结果|名单|指南|通告")
+GRANT=re.compile(r"社科基金|社会科学基金|哲学社会科学规划|社会科学规划|国家自然科学基金|国自然|年度项目|重大项目|专项项目|课题|立项|资助|科学基金|项目申报|项目指南|基金管理|专项计划|专项资金")
 DATE_RE=re.compile(r"20(?:24|25|26)[年./-]\s*(?:0?[1-9]|1[0-2])[月./-]\s*(?:0?[1-9]|[12]\d|3[01])")
 NATIONAL=[
  {"id":"national_socsc_annual","scheme":"national_socsc","url":"https://www.nopss.gov.cn/GB/219469/431027/index.html",
@@ -121,7 +121,7 @@ def main():
     if dst.exists():
         with dst.open(encoding="utf-8-sig",newline="") as f:
             for row in csv.DictReader(f):
-                if not row.get("publication_date") or row["publication_date"]>=start:
+                if GRANT.search(row.get("notice_title","")) and (not row.get("publication_date") or row["publication_date"]>=start):
                     all_rows[(row["scheme"],row["notice_url"])]=row
     counts={"nsfc":0,"national_socsc":0,"provincial_socsc":0}
     problems=[]
