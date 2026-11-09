@@ -1,34 +1,41 @@
 TASK_ID: IDEA_NSFC_PROJECT_LEVEL_SEED_V1_20261109
-TASK_VERSION: 1
-STATUS: BLOCKED
-NEXT_ACTOR: ChatGPT（修复脚本编码处理；核验华科 SSL）
+TASK_VERSION: 2
+STATUS: PARTIAL_DONE
+NEXT_ACTOR: ChatGPT（审核，规划下一批来源）
 
-# 国自然2025—2026年逐项资助项目首批采集报告
+# 国自然2025—2026年逐项资助项目首批采集报告（v2）
 
-## 结论：0 条入库，BLOCKED。3 源为脚本编码缺陷，1 源为 SSL 阻塞。
+## 结果：46 条项目级记录入库（3 源成功，1 源 SSL 阻塞）
 - 运行：`python scripts/collect_nsfc_awards_from_universities.py --registry sources/nsfc_award_source_registry.json --output public_metadata/nsfc_awards_2025_2026_partial.csv --audit reports/nsfc_awards_2025_2026_seed_audit.json`
-- 结果：`status=BLOCKED_NO_NEW_PROJECT_LEVEL_SOURCES`，`new_or_verified_approval_numbers=0`。
-- **未生成** `public_metadata/nsfc_awards_2025_2026_partial.csv`（无假入库）。审计 JSON 已写 `reports/nsfc_awards_2025_2026_seed_audit.json`（含各源失败原因）。
+- `status=PARTIAL_PROJECT_LEVEL_SEED_COLLECTED`，`new_or_verified_approval_numbers=46`，`index_total_unique_approval_numbers=46`。
 
-## 逐源诊断（本机实测）
+| 来源 | 年份 | 成功数 | 状态 |
+|------|------|-------|------|
+| 南开大学经济学院 | 2026 | 11 | collected |
+| 湖南师范大学物电学院 | 2026 | 23 | collected |
+| 湖南师范大学物电学院 | 2025 | 12 | collected |
+| 华中科技大学经济学院 | 2026 | 0 | SSL 阻塞（证书/连接，非脚本缺陷） |
+| **合计** | | **46** | |
 
-### 1. 南开大学经济学院 2026（economics.nankai.edu.cn）— 脚本编码缺陷
-- 页面 **HTTP 200 / text/html**，真实含结构化立项表（表 0：列头 `项目批准号 | 负责人 | 项目名称 | 项目类别`；数据行如 `72673088 丁华、72673090 宋泽`，均为面上项目）。
-- **根因**：页面为 UTF-8 但响应头 `Content-Type: text/html` **无 charset**；`requests` 默认 `response.encoding = ISO-8859-1`。脚本第 120 行 `BeautifulSoup(raw,"html.parser",from_encoding=encoding)` 直接用它 → 中文全部乱码 → `find_header` 匹配失败 → 报 `No structured NSFC awards with approval numbers found`。
-- **验证**：用 `response.apparent_encoding`（utf-8）解码 → `项目名称` 正常出现，表头可匹配。
-- **修复建议**：`from_encoding` 对 iso-8859-1/latin-1/none 传 `None`（自动探测），或改用 `apparent_encoding`；与 `scripts/crawl_official_sites.py` 的 `html_data()`（iso-8859-1→None）保持一致。
+- 2025 年 12 条 / 2026 年 34 条；管理科学/经济方向 = 南开 11 条；其他学科（物电）= 湖南师大 35 条。
+- 批准号全部唯一（46/46），无重复、无冲突。
 
-### 2/3. 湖南师范大学物电学院 2026 / 2025（wdy.hunnu.edu.cn）— 同编码缺陷
-- 两页均 **HTTP 200 / text/html**，`encoding=ISO-8859-1`、`apparent=UTF-8-SIG`（无 charset 头）。同 1 的编码缺陷 → 0 行。修复同上。
+## 抽查（任务步骤 5）
+- **46/46 逐条与源页面一致**：每行「批准号 + 项目名称 + 负责人」均能在对应公开页面文本中定位（南开 11/11、湖南师大26 23/23、湖南师大25 12/12）。
+- 未发现错别字/重复/缺项；`approval_number` 全为 8 位（`\d{8}`）。
+- `source_level=university_published_award_list`，`collection_scope=partial_institution_records_not_nationwide`（未改全国覆盖）。
 
-### 4. 华中科技大学经济学院 2026（eco.hust.edu.cn）— SSL 阻塞（非脚本缺陷）
-- 脚本在 `robots.txt` 抓取即失败；本机实测主 URL 亦 `SSLError: HTTPSConnectionPool(host='eco.hust.edu.cn', port=443): Max retries exceeded`（证书/连接层）。
-- 属真实源级网络/证书阻塞，无法合法绕过。需 ChatGPT 判断是否换源、或该子域需特殊 TLS/证书配置，或标记为不可用。
+## 官方查询平台核验（任务步骤 6，正常页面浏览，未逆向 API）
+- `https://kd.nsfc.cn/` 正常加载（HTTP 200，浏览器渲染 = 「国家自然科学基金大数据知识管理服务门户」）。
+- **公众免登录可用**：「数据查询」搜索框（请输入项目或成果关键词）+「信息检索」菜单 + 科研人员/项目详情页（`/finalDetails?id=` 公开可点）；公开基础数据（资助项目数 738,916 等）。
+- 存在「登录」（个人中心/更全数据），且「本平台提供的数据仅供参考」声明。
+- 未验证全量逐条导出；不建议批量抓取门户（可能触发 429/验证码，且超出本批范围）。下一批如需，建议单独评估合规导出方式。
 
-## 其他
-- 官方查询平台 `https://kd.nsfc.cn/` 按任务步骤 6 属独立核验项；本批未执行（先阻塞于来源提取）。建议 ChatGPT 在编码修复后一并安排查询平台可用性核验。
-- 全程未绕过 robots/验证码/403/429/Cloudflare；未用代理/私有接口；`data/`、`logs/` 未上传。
-- 国社科 6065 条**冻结不动**。
+## 提交内容
+- `public_metadata/nsfc_awards_2025_2026_partial.csv`（46 行）
+- `reports/nsfc_awards_2025_2026_seed_audit.json`
+- 本报告（`data/`、`logs/` 及原页面未上传；华科源 SSL 阻塞已记录）。
 
-## 下一步
-ChatGPT 修复 `collect_nsfc_awards_from_universities.py` 编码处理（iso-8859-1→None）后重发；华科源若 SSL 无法解决则标记阻塞。重跑命令同上。
+## 停止说明
+- 本批达到「至少一个明确项目级公开来源成功提取且逐项抽查通过」，按实际成功数报告 **PARTIAL_DONE**。
+- 下一批来源与扩量由 ChatGPT 审核；国社科 6065 条冻结不动；未宣称全国覆盖，未称基金委逐项认证（`review_state=pending_crosscheck_with_NSFC_public_record`）。

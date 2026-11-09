@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-11-10T01:04:01.851365+09:00",
-  "status": "BLOCKED_NO_NEW_PROJECT_LEVEL_SOURCES",
+  "checked_at": "2026-11-10T01:21:25.635727+09:00",
+  "status": "PARTIAL_PROJECT_LEVEL_SEED_COLLECTED",
   "national_scope": "partial_university_award_lists",
-  "new_or_verified_approval_numbers": 0,
-  "index_total_unique_approval_numbers": 0,
+  "new_or_verified_approval_numbers": 46,
+  "index_total_unique_approval_numbers": 46,
   "official_2026_total_notice": "https://www.nsfc.gov.cn/p1/3381/2822/141011.html",
   "official_total_is_not_titles": true,
   "sources": [
@@ -19,25 +19,25 @@
       "source_id": "nankai_economics_2026",
       "source_url": "https://economics.nankai.edu.cn/2026/0827/c15998a601524/page.htm",
       "year": 2026,
-      "result": "failed_or_blocked",
-      "rows": 0,
-      "reason": "ValueError:No structured NSFC awards with approval numbers found"
+      "result": "collected",
+      "rows": 11,
+      "final_url": "https://economics.nankai.edu.cn/2026/0827/c15998a601524/page.htm"
     },
     {
       "source_id": "hunnu_physics_2026",
       "source_url": "https://wdy.hunnu.edu.cn/info/1041/9685.htm",
       "year": 2026,
-      "result": "failed_or_blocked",
-      "rows": 0,
-      "reason": "ValueError:No structured NSFC awards with approval numbers found"
+      "result": "collected",
+      "rows": 23,
+      "final_url": "https://wdy.hunnu.edu.cn/info/1041/9685.htm"
     },
     {
       "source_id": "hunnu_physics_2025",
       "source_url": "https://wdy.hunnu.edu.cn/info/1041/9024.htm",
       "year": 2025,
-      "result": "failed_or_blocked",
-      "rows": 0,
-      "reason": "ValueError:No structured NSFC awards with approval numbers found"
+      "result": "collected",
+      "rows": 12,
+      "final_url": "https://wdy.hunnu.edu.cn/info/1041/9024.htm"
     }
   ]
 }
