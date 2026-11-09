@@ -15,6 +15,14 @@ class TestMoeHumanities(unittest.TestCase):
         self.assertEqual(mapping["project_title"],2)
         self.assertEqual(mapping["principal_investigator"],5)
         self.assertEqual(mapping["project_approval_number"],4)
+    def test_major_projects_chief_expert_and_bidding_unit(self):
+        header=["序号","课题名称","投标单位","首席专家","项目批准号"]
+        index, cols=mod.columns_from_head([header])
+        self.assertEqual(index,0)
+        self.assertEqual(cols["project_title"],1)
+        self.assertEqual(cols["university"],2)
+        self.assertEqual(cols["principal_investigator"],3)
+        self.assertEqual(cols["project_approval_number"],4)
     def test_publicity_2026_no_approval_number_is_allowed_in_header(self):
         header=["序号","学科","项目名称","项目类别","负责人","学校名称"]
         pos,mapping=mod.columns_from_head([header])
@@ -25,7 +33,7 @@ class TestMoeHumanities(unittest.TestCase):
         import json
         src=json.loads((root/"sources"/"moe_humanities_2025_2026_registry.json").read_text("utf-8"))
         groups=src["groups"]
-        self.assertEqual(sum(x["expected"] for x in groups if x["year"]==2025),3267)
+        self.assertEqual(sum(x["expected"] for x in groups if x["year"]==2025),3525)
         self.assertEqual(sum(x["expected"] for x in groups if x["year"]==2026),2713)
         self.assertTrue(all(x["status"]=="formal_award" for x in groups if x["year"]==2025))
         self.assertTrue(all(x["status"]=="public_review_not_formal_award" for x in groups if x["year"]==2026))
