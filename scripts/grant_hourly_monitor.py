@@ -103,6 +103,19 @@ def province_sources(file):
                "province":obj["province"],"source_level":obj["source_level"],
                "url":url,"hosts":obj["allowed_hosts"],"detail":obj["record_status"]!="portal_only"}
 
+def supplemental_official_sources(path="sources/grant_verified_additions_2026-11-09.json"):
+    p=Path(path)
+    if not p.exists():return
+    obj=json.loads(p.read_text(encoding="utf-8"))
+    for idx,entry in enumerate(obj.get("entries",[]),1):
+        if entry.get("source_level","").startswith("source_not_verified"):continue
+        url=entry.get("source_url","")
+        hosts=entry.get("allowed_hosts",[])
+        if not url or not hosts:continue
+        yield {"id":"verified_addition_"+str(idx),"scheme":entry["scheme"],
+               "province":entry.get("province",""),"source_level":entry["source_level"],
+               "url":url,"hosts":hosts,"detail":True}
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--prov-registry",default="sources/provincial_socsc_registry.json")
@@ -114,7 +127,7 @@ def main():
     try: start=today.replace(year=today.year-2).isoformat()
     except ValueError:start=today.replace(year=today.year-2,day=28).isoformat()
     end=today.isoformat()
-    source_list=NATIONAL+list(province_sources(args.prov_registry))
+    source_list=NATIONAL+list(province_sources(args.prov_registry))+list(supplemental_official_sources())
     fetcher=SiteFetcher(min_delay=args.delay,timeout=16)
     dst=Path(args.output)
     all_rows={}
