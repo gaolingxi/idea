@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-11-10",
+  "scope": "provincial_social_science_formal_awards",
+  "additions": [
+    {
+      "province": "浙江",
+      "project_year": 2026,
+      "project_type": "省哲学社会科学规划重大（培育）课题",
+      "status": "formal",
+      "publication_date": "2026-04-29",
+      "issuer": "浙江省哲学社会科学工作办公室",
+      "source_url": "https://www.zjskw.gov.cn/col/col1229516287/art/2026/art_83df91b6212a47afb0ea75402fc65316.html",
+      "official_notice_number": "浙社科办〔2026〕17号",
+      "attachment_status": "official PDF linked; download redirected to provincial OSS and could not be read in this run",
+      "rows_ingested": 0,
+      "verification": "Official announcement explicitly approves projects; row-by-row attachment audit pending",
+      "coverage": "special_major_cultivation_not_provincial_annual_full_list"
+    }
+  ],
+  "notes": "Independent incremental source registry only. No edits to frozen NSSFC or existing metadata. Do not count unparsed titles as ingested."
+}
