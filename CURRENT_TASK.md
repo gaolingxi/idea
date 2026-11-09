@@ -1,17 +1,11 @@
-TASK_ID: IDEA_NSSFC_2026_FULL_6065_PROPOSED_V1
-TASK_VERSION: 3
+TASK_ID: IDEA_NSFC_PROJECT_LEVEL_SEED_V1_20261109
+TASK_VERSION: 1
 STATUS: PENDING
 EXECUTOR: OPENCODE
 NEXT_ACTOR: OPENCODE
 AUTOMATION_READY: YES
-AUTOMATION_REQUIRED_FILES: OPENCODE_TASK_NSSFC_2026_FULL_ROSTER.md;scripts/audit_nssfc_2026_full_proposed.py;OPENCODE_REPORT_NSSFC_2026_PDF.md;AGENTS.md
+AUTOMATION_REQUIRED_FILES: OPENCODE_TASK_NSFC_SEED.md;scripts/collect_nsfc_awards_from_universities.py;sources/nsfc_award_source_registry.json;requirements-site-crawler.txt;AGENTS.md
 
-# 当前任务：国社科2026拟立项完整6065行审计
+# 当前任务：国家自然科学基金真实项目名称首批采集
 
-前序PDF下载提取任务（v3）已DONE，5931条公开题目已经核实。本任务负责从四份原PDF保留134条“题目略”的公示项目，核对四类总计6065条并在全部质量闸门通过后写入公开索引。执行入口：OPENCODE_TASK_AUTORUN.md。OpenCode只执行ChatGPT写好的脚本。
-
-## v2 本轮修复说明
-四份原PDF表头为「申请人」，v1 脚本的 person 列词表遗漏该名称导致0行、已如实报告FAILED。v2 只修复该表头，测试已改用真实表头；重新运行原四份PDF的完整6065行审核，严禁跳过质量闸门或把拟立项当正式立项。原 v1 FAILED 报告保留作证据。
-
-## v3 质量闸门修复
-v2 实测四类444/2705/2350/566，公开题目5931、略134；此前5931条在不含类别时内容零差异。v3 将英文类别key/general/young/western严格映射到重点/一般/青年/西部，再逐条比较全部四字段；**不删除类别核验、不放松闸门**。保留旧FAILED报告并重新执行。
+国社科2026公示6065条已完成并冻结，不再正式批复核验。国自然项目级资料原先为0条，第一轮只处理4份已定位的大学公开获资助表格，并核查基金委公开查询来源。子任务：OPENCODE_TASK_NSFC_SEED.md。
