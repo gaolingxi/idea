@@ -46,7 +46,7 @@ def header_map(rows):
         "list_sequence": ("序号",),
         "discipline": ("涉及学科","学科"),
         "title": ("课题名称","项目名称","课题题目"),
-        "person": ("负责人","主持人"),
+        "person": ("负责人","申请人","主持人"),
         "unit": ("依托单位","责任单位","工作单位"),
     }
     for i,row in enumerate(rows[:6]):
