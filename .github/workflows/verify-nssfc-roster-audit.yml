@@ -1,0 +1,39 @@
+name: Verify full NSSFC annual proposed roster parser
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/audit_nssfc_2026_full_proposed.py'
+      - 'OPENCODE_TASK_NSSFC_2026_FULL_ROSTER.md'
+      - '.github/workflows/verify-nssfc-roster-audit.yml'
+permissions:
+  contents: read
+jobs:
+  syntax-and-header:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install parser
+        run: python -m pip install pdfplumber
+      - name: Check syntax and known official table header
+        run: |
+          python -m py_compile scripts/audit_nssfc_2026_full_proposed.py
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          f=Path('scripts/audit_nssfc_2026_full_proposed.py')
+          spec=importlib.util.spec_from_file_location('audit',f)
+          m=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(m)
+          row=['序号','涉及学科','课题名称','负责人','依托单位']
+          index, cols=m.header_map([row,['1','应用经济学','示例题目研究','张某','示例单位']])
+          assert index==0
+          assert cols=={'list_sequence':0,'discipline':1,'title':2,'person':3,'unit':4},cols
+          assert sum(v[1] for v in m.PDFS.values())==6065
+          assert len(m.PDFS)==4
+          print('NSSFC_PARSER_HEADER_AND_EXPECTED_COUNTS_OK')
+          PY
