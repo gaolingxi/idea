@@ -165,7 +165,9 @@ def main():
     if (len(records),total_public,total_hidden)!=(6065,5931,134):
         raise ValueError(f"Global count discrepancy: all={len(records)}, published={total_public}, omitted={total_hidden}; NOT PUBLISHING")
     previous=existing_candidates(directory/"nssfc_2026_proposed_candidates.csv")
-    new={(r["category"],r["title"],r["person"],r["unit"]) for r in records if r["title_is_public"]=="yes"}
+    # The earlier extractor stores Chinese category labels; normalize before exact 4-field comparison.
+    category_labels={"key":"重点","general":"一般","young":"青年","western":"西部"}
+    new={(category_labels[r["category"]],r["title"],r["person"],r["unit"]) for r in records if r["title_is_public"]=="yes"}
     if new!=previous:
         missing=list(previous-new)[:3]
         extra=list(new-previous)[:3]
