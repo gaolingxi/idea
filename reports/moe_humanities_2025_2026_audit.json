@@ -1,7 +1,7 @@
 {
-  "run_time": "2026-11-10T01:41:03.405410+09:00",
-  "source_count": 10,
-  "passed_groups": 6,
+  "run_time": "2026-11-10T01:45:51.222763+09:00",
+  "source_count": 13,
+  "passed_groups": 9,
   "per_source": [
     {
       "id": "moe_2025_core",
@@ -308,11 +308,138 @@
       "result": "BLOCKED_OR_FAILED",
       "published_count": 0,
       "reason": "HTTPError:404 Client Error: Not Found for url: http://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392145629.pdf"
+    },
+    {
+      "id": "moe_2025_major_research",
+      "year": 2025,
+      "group": "major_research",
+      "status": "formal_award",
+      "expected_count": 48,
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202605/t20260506_1435533.html",
+      "pdf_url": "https://www.sinoss.net/upload/resources/file/2026/05/07/47063.pdf",
+      "result": "PASS",
+      "published_count": 48,
+      "pages": 4,
+      "sample_headers": [
+        [
+          "序号",
+          "课题名称",
+          "投标单位",
+          "首席专家",
+          "项目批准号"
+        ],
+        [
+          "序号",
+          "课题名称",
+          "投标单位",
+          "首席专家",
+          "项目批准号"
+        ],
+        [
+          "序号",
+          "课题名称",
+          "投标单位",
+          "首席专家",
+          "项目批准号"
+        ],
+        [
+          "序号",
+          "课题名称",
+          "投标单位",
+          "首席专家",
+          "项目批准号"
+        ]
+      ],
+      "extracted_count": 48,
+      "sample_project_titles": [
+        "习近平新时代中国特色社会主义思想对马克思主义和人类文明的原创性贡献研究",
+        "习近平总书记关于城市工作重要论述研究"
+      ],
+      "actual_pdf_url": "https://www.sinoss.net/upload/resources/file/2026/05/07/47063.pdf"
+    },
+    {
+      "id": "moe_2025_major_ideological",
+      "year": 2025,
+      "group": "major_ideological_teaching",
+      "status": "formal_award",
+      "expected_count": 12,
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202605/t20260506_1435533.html",
+      "pdf_url": "https://www.sinoss.net/upload/resources/file/2026/05/07/47064.pdf",
+      "result": "PASS",
+      "published_count": 12,
+      "pages": 1,
+      "sample_headers": [
+        [
+          "序号",
+          "课题名称",
+          "投标单位",
+          "首席专家",
+          "项目批准号"
+        ]
+      ],
+      "extracted_count": 12,
+      "sample_project_titles": [
+        "中国哲学社会科学自主知识体系融入高校思政课路径研究",
+        "中国哲学社会科学自主知识体系融入高校思政课路径研究"
+      ],
+      "actual_pdf_url": "https://www.sinoss.net/upload/resources/file/2026/05/07/47064.pdf"
+    },
+    {
+      "id": "moe_2025_ideological_teacher_general",
+      "year": 2025,
+      "group": "ideological_teacher_general",
+      "status": "formal_award",
+      "expected_count": 198,
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422101.html",
+      "pdf_url": "https://www.sinoss.net/upload/resources/file/2025/12/03/46573.pdf",
+      "result": "PASS",
+      "published_count": 198,
+      "pages": 12,
+      "sample_headers": [
+        [
+          "序号",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ]
+      ],
+      "extracted_count": 198,
+      "sample_project_titles": [
+        "图像史料在高校思政课教学中的应用研究",
+        "“习近平新时代中国特色社会主义思想概论”课问题链教学法运用研究"
+      ],
+      "actual_pdf_url": "https://www.sinoss.net/upload/resources/file/2025/12/03/46573.pdf"
     }
   ],
-  "persisted_project_rows": 3267,
+  "persisted_project_rows": 3525,
   "by_year": {
-    "2025": 3267
+    "2025": 3525
   },
   "2025_formal_vs_2026_publicity": "2025=ministerial formal awards; 2026=publicity only",
   "note": "Only exact-count PDF table rows are exported. Other groups remain BLOCKED, not inferred."
