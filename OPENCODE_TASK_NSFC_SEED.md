@@ -1,7 +1,7 @@
 # OpenCode专项任务｜2025—2026国家自然科学基金项目级名单采集（首批）
 
 TASK_ID: IDEA_NSFC_PROJECT_LEVEL_SEED_V1_20261109
-TASK_VERSION: 1
+TASK_VERSION: 2
 STATUS: PENDING
 EXECUTOR: OPENCODE
 NEXT_ACTOR: OPENCODE
@@ -29,3 +29,6 @@ python scripts/collect_nsfc_awards_from_universities.py --registry sources/nsfc_
 
 ## 停止条件
 至少一个明确项目级公开来源成功提取且逐项抽查后，按实际成功数报告 PARTIAL_DONE；如果无来源成功，状态BLOCKED，并给出具体失败原因。**不能以工程测试通过代替项目入库。**
+
+## 版本2：修复首轮BLOCKED问题
+首轮已执行，国自然项目入库0条（南开及湖南师大两个年度因 `requests` 在无charset的UTF-8网页中返回ISO-8859-1导致乱码；华中科技大学经济学院是HTTPS SSL连接失败，必须保留真实阻塞，绝不关掉证书验证）。ChatGPT现已更新脚本：在无明确编码或ISO-8859-1回退时先严格按UTF-8解析，失败才让BeautifulSoup探测其他编码；补充中文表头回归测试。请只重跑这一批，成功提取公开清单、去重、抽查后回写结果，并检查基金委公开查询站点的合规可用性。不要把高校局部名单当全国完整项目库。保留v1 BLOCKED审计记录。
