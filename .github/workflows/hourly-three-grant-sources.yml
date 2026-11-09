@@ -1,4 +1,4 @@
-name: Hourly NSFC provincial and national social-science grant collection
+name: Hourly NSFC and provincial social-science grant collection
 
 on:
   workflow_dispatch:
@@ -38,9 +38,9 @@ jobs:
         run: python scripts/collect_provincial_socsc.py --delay 2
       - name: Reconcile published provincial official HTML project rows
         run: python scripts/collect_provincial_html.py
-      - name: Locate and parse official national NSFC / NSSFC notices and PDFs
+      - name: Locate and parse national NSFC notices and PDFs
         run: |
-          python scripts/crawl_official_sites.py --db data/grant_national/materials.sqlite --source-id project_nopss_annual --source-id project_nopss_major --source-id project_nsfc_management --attachments --max-pages 2 --max-details 15
+          python scripts/crawl_official_sites.py --db data/grant_national/materials.sqlite --source-id project_nsfc_management --attachments --max-pages 2 --max-details 15
       - name: Separate national individual PDF candidates from official notices
         run: python scripts/export_national_grant_candidates.py
       - name: Verify output files and count categories
@@ -70,7 +70,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No new verified-source metadata or candidate rows"
           else
-            git commit -m "Hourly grant registry update: NSFC provincial NSSFC"
+            git commit -m "Hourly grant registry update: NSFC provincial"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
@@ -78,7 +78,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: grant-three-sources-audit
+          name: grant-nsfc-provincial-audit
           path: |
             data/grant_hourly/grant_source_audit.json
             data/grant_national/crawl_summary.json
