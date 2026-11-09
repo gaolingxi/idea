@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "repository_slug": "gaolingxi/NEW-PROJECT",
+  "branch": "main",
+  "enabled": true,
+  "poll_minutes": 10,
+  "continue_text": "继续",
+  "current_task_file": "CURRENT_TASK.md",
+  "task_file": "OPENCODE_TASK.md",
+  "report_file": "OPENCODE_REPORT.md",
+  "lock_stale_seconds": 180,
+  "orca_idle_timeout_ms": 1200,
+  "publish_github_status": true,
+  "github_status_context": "local-checker/NEW-PROJECT"
+}
