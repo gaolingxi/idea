@@ -1,7 +1,7 @@
 # OpenCode 专项任务｜国社科2026年度项目公示完整名册核验
 
 TASK_ID: IDEA_NSSFC_2026_FULL_6065_PROPOSED_V1
-TASK_VERSION: 1
+TASK_VERSION: 2
 STATUS: PENDING
 EXECUTOR: OPENCODE
 NEXT_ACTOR: OPENCODE
@@ -25,3 +25,6 @@ python scripts/audit_nssfc_2026_full_proposed.py --input-dir data/nssfc_2026_sus
 
 ## 科学停止条件
 此支线在6065项全量公示名册完整、5931公开题目全部对齐、134项不公开题目得到保留、元数据成功入库后停止；不自动创建新任务、不做关键词选题评分。
+
+## v2 本轮修复说明
+四份原PDF表头为「申请人」，v1 脚本的 person 列词表遗漏该名称导致0行、已如实报告FAILED。v2 只修复该表头，测试已改用真实表头；重新运行原四份PDF的完整6065行审核，严禁跳过质量闸门或把拟立项当正式立项。原 v1 FAILED 报告保留作证据。
