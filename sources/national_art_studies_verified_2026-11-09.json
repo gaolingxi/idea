@@ -1,0 +1,51 @@
+{
+  "checked_at": "2026-11-09",
+  "scope": "National Social Science Fund art-studies award notices: newly verified official Ministry of Culture and Tourism sources not present as URLs in public_metadata/grant_source_notices.csv",
+  "source_records_not_project_rows": true,
+  "sources": [
+    {
+      "scheme": "national_socsc",
+      "subscheme": "art_studies_annual",
+      "project_year": 2026,
+      "publication_date": "2026-11-04",
+      "publisher": "中华人民共和国文化和旅游部科技教育司、全国艺术科学规划领导小组办公室",
+      "record_status": "formal",
+      "title": "2026年国家社科基金艺术学年度项目立项名单公布",
+      "notice_url": "https://zwgk.mct.gov.cn/zfxxgkml/kjjy/202611/t20261105_967568.html",
+      "attachment_url": "https://zwgk.mct.gov.cn/zfxxgkml/kjjy/202611/P020261105347431820346.pdf",
+      "attachment_pages": 30,
+      "announced_awards": 356,
+      "breakdown": {
+        "key": 45,
+        "general": 176,
+        "youth": 88,
+        "western": 47
+      },
+      "new_item_rows_in_public_metadata": 0,
+      "verification": "official_formal_notice_and_pdf_link_confirmed; project rows not yet ingested or deduplicated",
+      "dedup_key": "2026|national_socsc|art_studies_annual|official_approval_number"
+    },
+    {
+      "scheme": "national_socsc",
+      "subscheme": "art_studies_major",
+      "project_year": 2026,
+      "publication_date": "2026-07-22",
+      "publisher": "中华人民共和国文化和旅游部科技教育司、全国艺术科学规划领导小组办公室",
+      "record_status": "formal",
+      "title": "2026年国家社科基金艺术学重大项目立项名单公布",
+      "notice_url": "https://zwgk.mct.gov.cn/zfxxgkml/kjjy/202607/t20260720_966629.html",
+      "attachment_url": "https://zwgk.mct.gov.cn/zfxxgkml/kjjy/202607/P020260720533313137855.pdf",
+      "attachment_pages": 2,
+      "announced_awards": 24,
+      "new_item_rows_in_public_metadata": 0,
+      "verification": "official_formal_notice_and_pdf_link_confirmed; project rows not yet ingested or deduplicated",
+      "dedup_key": "2026|national_socsc|art_studies_major|official_approval_number"
+    }
+  ],
+  "known_limitations": [
+    "Officially announced total 380 is NOT an ingested individual-title count.",
+    "2026-07-22 major source is a newly filled gap, not a newly published notice.",
+    "No changes to existing provincial or national candidate tables.",
+    "Official PDF attachment accessible in public browser; do not bypass any access restrictions during future machine extraction."
+  ]
+}
