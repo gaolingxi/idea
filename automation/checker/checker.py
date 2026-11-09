@@ -294,42 +294,51 @@ def same_path(value: str | None, target: Path) -> bool:
     return os.path.normcase(os.path.abspath(value)) == os.path.normcase(os.path.abspath(str(target)))
 
 
-def choose_terminal(repo: Path, preferred: str | None) -> str:
-    try:
-        payload = orca_json(repo, ["terminal", "list", "--worktree", f"path:{repo}", "--limit", "20"])
-    except NotReady as original_error:
-        if not str(original_error).startswith("ORCA_CLI_FAILED"):
-            raise
-        # The Orca CLI version might reject --worktree. Read-only list fallback;
-        # all candidate terminals are STILL filtered by exact local worktree below.
+def choose_terminal(repo: Path, preferred: str | None, alternate_worktree: Path | None = None) -> str:
+    """Choose the unique existing OpenCode terminal for a verified project worktree.
+
+    The project's Git repository can live under an Orca project workspace named
+    'idea' (idea/repo). The caller explicitly opts into that ONE parent path.
+    No substring, wildcard or cross-project matching is allowed.
+    """
+    paths = [repo]
+    if alternate_worktree is not None:
+        paths.append(alternate_worktree)
+    eligible = {}
+    for path in paths:
         try:
-            payload = orca_json(repo, ["terminal", "list", "--limit", "20"])
-        except NotReady as fallback_error:
-            raise NotReady(
-                "ORCA_LIST_UNAVAILABLE:filtered=" + str(original_error).split(":")[-1]
-                + ";fallback=" + str(fallback_error).split(":")[-1]
-            ) from fallback_error
-    terms = payload.get("result", {}).get("terminals", [])
-    candidates = [
-        t for t in terms
-        if isinstance(t, dict)
-        and t.get("agentIdentity") == "opencode"
-        and t.get("connected") is True
-        and t.get("writable") is True
-        and t.get("orphaned") is not True
-        and same_path(t.get("worktreePath"), repo)
-        and isinstance(t.get("handle"), str)
-    ]
-    if preferred:
-        for term in candidates:
-            if term["handle"] == preferred:
-                return preferred
-    if len(candidates) == 1:
-        return candidates[0]["handle"]
-    if not candidates:
+            payload = orca_json(repo, ["terminal", "list", "--worktree", f"path:{path}", "--limit", "50"])
+        except NotReady as original_error:
+            if not str(original_error).startswith("ORCA_CLI_FAILED"):
+                raise
+            # Older Orca versions reject --worktree. Read-only fallback; the
+            # same exact-path filter below still applies, never another repo.
+            try:
+                payload = orca_json(repo, ["terminal", "list", "--limit", "100"])
+            except NotReady as fallback_error:
+                raise NotReady(
+                    "ORCA_LIST_UNAVAILABLE:filtered=" + str(original_error).split(":")[-1]
+                    + ";fallback=" + str(fallback_error).split(":")[-1]
+                ) from fallback_error
+        terms = payload.get("result", {}).get("terminals", [])
+        for term in terms:
+            if (
+                isinstance(term, dict)
+                and term.get("agentIdentity") == "opencode"
+                and term.get("connected") is True
+                and term.get("writable") is True
+                and term.get("orphaned") is not True
+                and same_path(term.get("worktreePath"), path)
+                and isinstance(term.get("handle"), str)
+            ):
+                eligible[term["handle"]] = term
+    if preferred and preferred in eligible:
+        return preferred
+    if len(eligible) == 1:
+        return next(iter(eligible))
+    if not eligible:
         raise NotReady("ORCA_OPENCODE_NOT_FOUND")
     raise NotReady("ORCA_OPENCODE_AMBIGUOUS")
-
 
 def terminal_idle(repo: Path, handle: str, timeout_ms: int) -> bool:
     rc, payload = orca_raw(
@@ -472,7 +481,14 @@ def check_once(start: Path, config_path: Path, check_only: bool = False) -> dict
             return result
 
         preferred = str(state.get("preferred_terminal_handle") or "").strip() or None
-        handle = choose_terminal(repo, preferred)
+        alternate_worktree = None
+        if cfg.get("allow_project_parent_worktree") is True:
+            # The local idea project has a nested git root idea/repo.
+            # Only this known layout is allowed; never guess sibling projects.
+            if repo.name.casefold() != "repo" or repo.parent.name.casefold() != "idea":
+                raise NotReady("ORCA_PARENT_WORKTREE_UNSAFE_LAYOUT")
+            alternate_worktree = repo.parent
+        handle = choose_terminal(repo, preferred, alternate_worktree)
         if not terminal_idle(repo, handle, int(cfg.get("orca_idle_timeout_ms") or 1200)):
             result = {"status": "ORCA_OPENCODE_BUSY", "terminal_handle": handle, "task_fingerprint": fingerprint, **base}
             save_last(runtime, result)
