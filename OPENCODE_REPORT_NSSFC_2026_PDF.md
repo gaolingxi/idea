@@ -1,46 +1,45 @@
 # OPENCODE_REPORT_NSSFC_2026_PDF.md
 
 TASK_ID: IDEA_NSSFC_2026_SU_SE_PDF_LINKS_V1
-STATUS: BLOCKED
-NEXT_ACTOR: ChatGPT（脚本修订，白名单加域）
+TASK_VERSION: 3
+STATUS: DONE
+NEXT_ACTOR: ChatGPT（正式立项核验 / 下一步审核）
 
 - Source: https://fgc.suse.edu.cn/2026/1010/c5016a217143/page.htm
-- 执行时间：2026-11-09（本地在线，脚本本地运行成功）
-- 单元测试 / 依赖：`python -m py_compile` 通过；`requirements-site-crawler.txt` 已满足（requests/bs4/pdfplumber 均在）
+- 执行时间：2026-11-09（本地在线，脚本 v3 本地运行成功）
 - 运行命令：
   ```
   python scripts/inspect_nssfc_2026_pdf_links.py --url https://fgc.suse.edu.cn/2026/1010/c5016a217143/page.htm --out-dir data/nssfc_2026_suse --max-pdfs 4
   ```
 
-## 1. 公告页访问结果
-- `notice_access = public_html_accessible`：公告 HTML **公开可读**，无需登录/验证码，无 401/403/429/Cloudflare。
-- 页面内发现 **4 个 PDF 附件直链**（重点/一般/青年/西部 各 1），全部为 `https://download.people.com.cn/yunying2/twentyfive17....pdf`。
+## 1. 结果总览
+- 公告页 `notice_access = public_html_accessible`（公开可读，无登录/验证码/403/429/CF）。
+- 4 份 PDF 附件**全部下载成功**（白名单已由 ChatGPT 加 `download.people.com.cn` 放行，v3）。
+- 文本型标准表格（非扫描件），`pdfplumber` 逐表提取，**无错误**。
 
-## 2. PDF 直链与白名单状态
-| 类别 | PDF URL | 域内白名单 | 脚本结果 |
-|------|---------|-----------|---------|
-| 重点 | https://download.people.com.cn/yunying2/twentyfive17914600301.pdf | 否 | external_domain_requires_separate_official_verification |
-| 一般 | https://download.people.com.cn/yunying2/twentyfive17914600601.pdf | 否 | 同上 |
-| 青年 | https://download.people.com.cn/yunying2/twentyfive17914600921.pdf | 否 | 同上 |
-| 西部 | https://download.people.com.cn/yunying2/twentyfive17914601111.pdf | 否 | 同上 |
+| 类别 | PDF URL | 页数 | 提取行数 | 下载大小 | 状态 |
+|------|---------|------|---------|---------|------|
+| 重点 | https://download.people.com.cn/yunying2/twentyfive17914600301.pdf | 18 | 439 | 471,346 B | 已下载并解析 |
+| 一般 | https://download.people.com.cn/yunying2/twentyfive17914600601.pdf | 109 | 2657 | 1,001,502 B | 已下载并解析 |
+| 青年 | https://download.people.com.cn/yunying2/twentyfive17914600921.pdf | 95 | 2293 | 1,080,730 B | 已下载并解析 |
+| 西部 | https://download.people.com.cn/yunying2/twentyfive17914601111.pdf | 23 | 542 | 519,733 B | 已下载并解析 |
+| **合计** | | | **5931** | | |
 
-脚本 `ALLOWED_HOSTS = ["suse.edu.cn"]`，4 份 PDF 全部托管在 `download.people.com.cn`（人民网下载域），**不在白名单** → 按安全规则未下载。`downloaded_pdfs = 0`、`extracted_candidate_rows = 0`。
+## 2. 抽查与质量核验（按任务步骤 3，未使用 OCR）
+- 每类首页与末页表头一致：`序号 | 涉及学科 | 课题名称 | 负责人 | 依托单位`；页码脚注 `第 N 页 共 N 页` 标准。
+- **逐项交叉核对**：每类随机抽 10 项（共 40 项），以 PDF 同页 `extract_tables()` 单元格逐一核对「课题名称+负责人+依托单位」→ **40/40 全部匹配**。提取准确。
+- 字段完整性（5931 行）：`project_title`、`principal_investigator`、`organization` 空值均为 **0**。
+- **`project_id` 全为空（5931/5931）——属正确结果**：拟立项公示名单**无「编号/批准号」列**（仅序号/学科/名称/负责人/单位），正式立项编号由全国社科办在批复后授予。脚本未误把「序号」当批准号。
 
-## 3. 跨域承载域核查（本机实测，仅验证，未下载正文）
-- `https://download.people.com.cn/robots.txt` → **HTTP 404**（无 robots 限制，按约定无明确禁止）。
-- 对重点类 PDF 做 HEAD：`HTTP 200`，`Content-Type: application/pdf`，`Content-Length = 471346`（约 460 KB），公开免登录可下载。
-- 结论：`download.people.com.cn` 属**合法公开官方承载域**（人民日报社/人民网官方下载服务器），4 份 PDF 均为公开、无权限门槛的官方附件。符合任务安全条款"核查确属合法公开官方承载域名"。
+## 3. 状态口径（任务步骤 4）
+- 2026-10-10 高校转发的附件**只能记为拟立项公示**：CSV `project_status = proposed_publicity_not_formal_award`，`evidence_level = participating_university_forwarding_original_list`，`review_state = pending_official_confirmation_and_spotcheck`。
+- 未对照到全国哲学社会科学工作办公室 2026 年度正式批复公告；**未**按正式立项写入。正式立项核验与去重属 ChatGPT/总控后续步骤。
+- 候选 CSV `data/nssfc_2026_suse/nssfc_2026_proposed_candidates.csv`（5931 行，utf-8-sig）**未与任何正式立项库合并**（任务步骤 5）。
 
-## 4. 为何未下载 / 下一步（需 ChatGPT 决定）
-- 任务明令 `不改代码；如脚本能力不足，回报具体故障，由 ChatGPT 迭代脚本`；`AGENTS.md` 明确 `ChatGPT 负责脚本修订`。
-- 白名单 `ALLOWED_HOSTS` 增加 `"people.com.cn"` 属**脚本修订**，**OpenCode 不擅自修改**。
-- 建议：ChatGPT 将 `scripts/inspect_nssfc_2026_pdf_links.py` 的 `ALLOWED_HOSTS` 增加 `"people.com.cn"` 后重新下发（或将 4 个直链写死为允许）。我已核验该域合法，可直接放行。
-- 放行后即可在本地完整执行：下载 4 份 PDF → `pdfplumber` 逐表提取题目/编号/负责人/单位 → 抽查每类首页末页+10 项 → 回写候选 CSV。
+## 4. 合规与本地保存
+- 全程未绕过登录/验证码/robots/403/429/Cloudflare；未用代理或私有接口；仅访问 SUSE 公告 + `download.people.com.cn`（已核验合法官方域，无 robots 限制，`200/application/pdf`）。
+- PDF 原文与候选 CSV 仅存项目内 `data/nssfc_2026_suse/`（已 gitignore，**未提交公开仓库**）。
+- 输出：`data/nssfc_2026_suse/link_probe_report.json`（已生成，含 4 直链、下载份数、页数、提取行数）。
 
-## 5. 合规与状态口径
-- 全程未绕过登录/验证码/robots/403/429，未使用代理或私有接口；未抓取任何第三方域内容。
-- 项目状态口径：2026-10-10 高校转发名单仅为**拟立项公示**（`proposed_publicity_not_formal_award`），**不得**记为正式立项，除非全国社科办另行正式公告。
-- 本地未生成候选 CSV（0 行），未与任何正式立项库合并。
-- 报告状态：**BLOCKED**（跨域白名单未放行，待 ChatGPT 脚本修订），非科研终点。
-
-- 输出报告：`data/nssfc_2026_suse/link_probe_report.json`（已生成，含 4 直链与 blocked 明细）
+## 5. 下一步
+- 交 ChatGPT 审核 5931 条拟立项候选；如需，由 ChatGPT 对照全国社科办正式公告按项目编号/题目+负责人去重并升级状态；正式立项后另行合并，不做 OCR、不臆造编号。
