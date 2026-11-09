@@ -15,8 +15,14 @@
 
 ## idea 项目 checker（基础设施，非科研任务）
 - 采用 `gaolingxi/research-project-orchestrator/checker-template` 标准模板，位于 `automation/checker/`；只轮询 **gaolingxi/idea** 的 `origin/main`，每10分钟检查一次。
-- 当前独立自动入口为 `CURRENT_TASK.md` + `OPENCODE_TASK_AUTORUN.md`；具体当前任务详见其引用的 `OPENCODE_TASK_NSSFC_2026_PDF.md`。原有 `OPENCODE_TASK.md` 小红书权限审查任务与报告**不修改**。
+- 当前独立自动入口为 `CURRENT_TASK.md` + `OPENCODE_TASK_AUTORUN.md`；当前子任务以 `CURRENT_TASK.md` 引用为准，目前是 `OPENCODE_TASK_NSFC_SEED.md`，国社科任务已冻结。原有 `OPENCODE_TASK.md` 小红书权限审查任务与报告**不修改**。
 - 任务仅在 `TASK_ID/TASK_VERSION/STATUS/EXECUTOR/NEXT_ACTOR/AUTOMATION_READY` 等元数据一致且必需文件齐全时投递；成功只向该项目 **唯一、可写、空闲的现有 Orca OpenCode** 发送一次“继续”+Enter，不创建新进程，不将指令发往其他仓库的 OpenCode。
 - 未找到唯一窗口、忙碌、任务不符、没有本地安装回执时只报告状态，不能标记已领取；窗口句柄变更自动重发现，陈旧锁可回收。
 - 本地安装仅在本项目仓库文件夹执行一次 `powershell -ExecutionPolicy Bypass -File automation/checker/install_windows.ps1`。安装前使用 `automation/checker/verify_template.ps1`。Windows计划任务执行仓库当前版本的薄入口，不把 watcher 复制到AppData。
 - Checker 只读 GitHub 任务并回传领取状态，不修改研究代码/任务结果；OpenCode回写 `OPENCODE_REPORT_AUTORUN.md` 和对应子任务报告。未经真实本地计划任务回执，`checker已部署到GitHub`**不等于**`Windows定时器已安装/已投递`。
+
+## 国社科收尾及国自然主线（2026-11-09）
+- 用户明确国社科项目到此结束。已完成的2026年度公示6065行及审计报告只读保留，不再追正式批复、不再生成新的国社科采集任务，也不再定时扫描国社科来源。
+- 当前转向国自然（国家自然科学基金）。2026年官网所称69563项是全国资助数量，并不是已取得69563条项目名称。
+- 优先管理科学部/经济金融方向，同时覆盖可公开核实的2025—2026年其他学科。先从官方基金委可公开资料以及高校公布的含批准号清单建立逐项证据库，严格标记高校局部数据不能代表全国完整覆盖。
+- 国自然种子来源 `sources/nsfc_award_source_registry.json`，执行代码 `scripts/collect_nsfc_awards_from_universities.py`。不使用登录、验证码、私有接口、未授权抓取。
