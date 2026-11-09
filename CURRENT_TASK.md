@@ -1,5 +1,5 @@
 TASK_ID: IDEA_NSSFC_2026_FULL_6065_PROPOSED_V1
-TASK_VERSION: 2
+TASK_VERSION: 3
 STATUS: PENDING
 EXECUTOR: OPENCODE
 NEXT_ACTOR: OPENCODE
@@ -12,3 +12,6 @@ AUTOMATION_REQUIRED_FILES: OPENCODE_TASK_NSSFC_2026_FULL_ROSTER.md;scripts/audit
 
 ## v2 本轮修复说明
 四份原PDF表头为「申请人」，v1 脚本的 person 列词表遗漏该名称导致0行、已如实报告FAILED。v2 只修复该表头，测试已改用真实表头；重新运行原四份PDF的完整6065行审核，严禁跳过质量闸门或把拟立项当正式立项。原 v1 FAILED 报告保留作证据。
+
+## v3 质量闸门修复
+v2 实测四类444/2705/2350/566，公开题目5931、略134；此前5931条在不含类别时内容零差异。v3 将英文类别key/general/young/western严格映射到重点/一般/青年/西部，再逐条比较全部四字段；**不删除类别核验、不放松闸门**。保留旧FAILED报告并重新执行。
