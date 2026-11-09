@@ -1,23 +1,17 @@
-TASK_ID: IDEA_NSSFC_2026_FULL_6065_PROPOSED_V1
-TASK_VERSION: 3
+TASK_ID: IDEA_NSFC_PROJECT_LEVEL_SEED_V1_20261109
+TASK_VERSION: 1
 STATUS: PENDING
 EXECUTOR: OPENCODE
 NEXT_ACTOR: OPENCODE
 AUTOMATION_READY: YES
-AUTOMATION_REQUIRED_FILES: OPENCODE_TASK_NSSFC_2026_FULL_ROSTER.md;scripts/audit_nssfc_2026_full_proposed.py;OPENCODE_REPORT_NSSFC_2026_PDF.md;AGENTS.md
+AUTOMATION_REQUIRED_FILES: OPENCODE_TASK_NSFC_SEED.md;scripts/collect_nsfc_awards_from_universities.py;sources/nsfc_award_source_registry.json;requirements-site-crawler.txt;AGENTS.md
 
-# idea自动领取任务｜第4阶段：全量公示名册
+# idea checker 自动领取｜国自然首批项目级名单
 
-收到本项目 Orca OpenCode 的“继续”后，只执行 OPENCODE_TASK_NSSFC_2026_FULL_ROSTER.md：
+收到本项目 Orca OpenCode 的“继续”后：
 
-1. git fetch origin main，本地仓库无修改时使用 git pull --ff-only origin main 同步。
-2. 阅读 AGENTS.md 和本次专项任务，运行 scripts/audit_nssfc_2026_full_proposed.py。无需重新下载4份PDF；不得改动原科研数据，不得修改或补造“题目略”。
-3. 只在6065项目总量、类别计数、5931公开题目一致性及134缺标题统计全部通过时，提交公开公示元数据CSV及审计报告。
-4. 回写 OPENCODE_REPORT_NSSFC_2026_FULL_ROSTER.md 和 OPENCODE_REPORT_AUTORUN.md 的TASK_ID/TASK_VERSION/STATUS及结果。没有成功则记BLOCKED/FAILED和具体原因。
-5. 完成后交ChatGPT审阅，不开展其他任务、不创建新主线。
-
-## v2 本轮修复说明
-四份原PDF表头为「申请人」，v1 脚本的 person 列词表遗漏该名称导致0行、已如实报告FAILED。v2 只修复该表头，测试已改用真实表头；重新运行原四份PDF的完整6065行审核，严禁跳过质量闸门或把拟立项当正式立项。原 v1 FAILED 报告保留作证据。
-
-## v3 质量闸门修复
-v2 实测四类444/2705/2350/566，公开题目5931、略134；此前5931条在不含类别时内容零差异。v3 将英文类别key/general/young/western严格映射到重点/一般/青年/西部，再逐条比较全部四字段；**不删除类别核验、不放松闸门**。保留旧FAILED报告并重新执行。
+1. 在 idea/repo 检查 git status，工作树干净时使用 git pull --ff-only origin main 同步。
+2. 仔细阅读 OPENCODE_TASK_NSFC_SEED.md，执行 scripts/collect_nsfc_awards_from_universities.py；只采官方公开大学网站项目批准号、名称、负责人，不把局部大学项目列表当全国汇总。
+3. 核实基金委公开知识平台 kd.nsfc.cn 可查询情况；访问受限即报告，不绕过限制。
+4. 回写 OPENCODE_REPORT_NSFC_SEED.md 及 OPENCODE_REPORT_AUTORUN.md 的 TASK_ID、TASK_VERSION、STATUS 与真实结果。允许的公开元数据与审计JSON经检查后提交GitHub；不提交 data/、logs/、原PDF。
+5. 国社科已结案，严禁继续原来的NSSFC任务。执行一批即止，不自动创建其他科研任务。
