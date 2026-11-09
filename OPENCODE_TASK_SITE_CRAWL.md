@@ -1,3 +1,5 @@
+> **优先子任务（与原任务并行但不覆盖）：** 2026年国社科拟立项PDF附件访问问题，见 [`OPENCODE_TASK_NSSFC_2026_PDF.md`](OPENCODE_TASK_NSSFC_2026_PDF.md) 和 [Issue #3](https://github.com/gaolingxi/idea/issues/3)。仅在本地连接可用时执行；完成后回写独立报告。
+
 # OPENCODE_TASK_SITE_CRAWL.md
 TASK_ID: IDEA_OFFICIAL_SITE_BACKFILL_V1_20261108
 STATUS: READY_FOR_LOCAL_EXECUTOR
