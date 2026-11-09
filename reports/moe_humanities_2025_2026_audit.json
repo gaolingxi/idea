@@ -1,0 +1,319 @@
+{
+  "run_time": "2026-11-10T01:41:03.405410+09:00",
+  "source_count": 10,
+  "passed_groups": 6,
+  "per_source": [
+    {
+      "id": "moe_2025_core",
+      "year": 2025,
+      "group": "general_plan_youth_self_funded",
+      "status": "formal_award",
+      "expected_count": 2817,
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021719419679.pdf",
+      "result": "PASS",
+      "published_count": 2817,
+      "pages": 166,
+      "sample_headers": [
+        [
+          "序号",
+          "学科门类",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "学科门类",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "学科门类",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "学科门类",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ]
+      ],
+      "extracted_count": 2817,
+      "sample_project_titles": [
+        "马克思恩格斯晚年文明思想研究",
+        "数智时代主流意识形态认同的情感叙事研究"
+      ],
+      "actual_pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021719419679.pdf"
+    },
+    {
+      "id": "moe_2025_western",
+      "year": 2025,
+      "group": "western_border",
+      "status": "formal_award",
+      "expected_count": 188,
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720003586.pdf",
+      "result": "PASS",
+      "published_count": 188,
+      "pages": 12,
+      "sample_headers": [
+        [
+          "序号",
+          "学科门类",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "学科门类",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "学科门类",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "学科门类",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ]
+      ],
+      "extracted_count": 188,
+      "sample_project_titles": [
+        "人工智能驱动下高校“三全育人”体系数字化转型的实现路径研究",
+        "高质量发展背景下科技创业与新质生产力动态耦合的内生机理、驱动机制与政策协同研究"
+      ],
+      "actual_pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720003586.pdf"
+    },
+    {
+      "id": "moe_2025_xinjiang",
+      "year": 2025,
+      "group": "xinjiang",
+      "status": "formal_award",
+      "expected_count": 13,
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720078745.pdf",
+      "result": "PASS",
+      "published_count": 13,
+      "pages": 1,
+      "sample_headers": [
+        [
+          "序号",
+          "学科门类",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ]
+      ],
+      "extracted_count": 13,
+      "sample_project_titles": [
+        "推进新疆伊斯兰教中国化的内涵要求和对策路径研究",
+        "北宋陕西路军事财政与西北边疆治理研究"
+      ],
+      "actual_pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720078745.pdf"
+    },
+    {
+      "id": "moe_2025_tibet",
+      "year": 2025,
+      "group": "tibet",
+      "status": "formal_award",
+      "expected_count": 1,
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720164837.pdf",
+      "result": "PASS",
+      "published_count": 1,
+      "pages": 1,
+      "sample_headers": [
+        [
+          "序号",
+          "学科门类",
+          "项目名称",
+          "项目类别",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ]
+      ],
+      "extracted_count": 1,
+      "sample_project_titles": [
+        "固边兴边战略下西藏边境国门学校布局优化研究"
+      ],
+      "actual_pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720164837.pdf"
+    },
+    {
+      "id": "moe_2025_theory",
+      "year": 2025,
+      "group": "special_socialism_theory",
+      "status": "formal_award",
+      "expected_count": 36,
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720228747.pdf",
+      "result": "PASS",
+      "published_count": 36,
+      "pages": 3,
+      "sample_headers": [
+        [
+          "序号",
+          "项目名称",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "项目名称",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "项目名称",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ]
+      ],
+      "extracted_count": 36,
+      "sample_project_titles": [
+        "新质生产力与高质量发展的互动机制研究",
+        "中国共产党引领中华文化主体性建构的文化基质、历史进程与实践路径研究"
+      ],
+      "actual_pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720228747.pdf"
+    },
+    {
+      "id": "moe_2025_counselor",
+      "year": 2025,
+      "group": "special_counselor",
+      "status": "formal_award",
+      "expected_count": 212,
+      "notice_url": "https://www.moe.gov.cn/s78/A13/tongzhi/202512/t20251202_1422099.html",
+      "pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720331558.pdf",
+      "result": "PASS",
+      "published_count": 212,
+      "pages": 13,
+      "sample_headers": [
+        [
+          "序号",
+          "项目名称",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "项目名称",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "项目名称",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ],
+        [
+          "序号",
+          "项目名称",
+          "项目批准号",
+          "申请人",
+          "学校名称"
+        ]
+      ],
+      "extracted_count": 212,
+      "sample_project_titles": [
+        "生成式AI背景下大学生学术失范行为的风险防控与协同治理机制研究",
+        "网络群体极化下大学生价值判断力提升路径研究"
+      ],
+      "actual_pdf_url": "https://www.tech.net.cn/upload/202512/02/202512021720331558.pdf"
+    },
+    {
+      "id": "moe_2026_core",
+      "year": 2026,
+      "group": "general_plan_youth",
+      "status": "public_review_not_formal_award",
+      "expected_count": 2533,
+      "notice_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/t20261019_1455204.html",
+      "pdf_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392128445.pdf",
+      "result": "BLOCKED_OR_FAILED",
+      "published_count": 0,
+      "reason": "HTTPError:404 Client Error: Not Found for url: http://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392128445.pdf"
+    },
+    {
+      "id": "moe_2026_western",
+      "year": 2026,
+      "group": "western_border",
+      "status": "public_review_not_formal_award",
+      "expected_count": 165,
+      "notice_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/t20261019_1455204.html",
+      "pdf_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392131620.pdf",
+      "result": "BLOCKED_OR_FAILED",
+      "published_count": 0,
+      "reason": "HTTPError:404 Client Error: Not Found for url: http://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392131620.pdf"
+    },
+    {
+      "id": "moe_2026_xinjiang",
+      "year": 2026,
+      "group": "xinjiang",
+      "status": "public_review_not_formal_award",
+      "expected_count": 14,
+      "notice_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/t20261019_1455204.html",
+      "pdf_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392141199.pdf",
+      "result": "BLOCKED_OR_FAILED",
+      "published_count": 0,
+      "reason": "HTTPError:404 Client Error: Not Found for url: http://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392141199.pdf"
+    },
+    {
+      "id": "moe_2026_tibet",
+      "year": 2026,
+      "group": "tibet",
+      "status": "public_review_not_formal_award",
+      "expected_count": 1,
+      "notice_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/t20261019_1455204.html",
+      "pdf_url": "https://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392145629.pdf",
+      "result": "BLOCKED_OR_FAILED",
+      "published_count": 0,
+      "reason": "HTTPError:404 Client Error: Not Found for url: http://www.moe.gov.cn/jyb_xxgk/s5743/s5745/202610/W020261019690392145629.pdf"
+    }
+  ],
+  "persisted_project_rows": 3267,
+  "by_year": {
+    "2025": 3267
+  },
+  "2025_formal_vs_2026_publicity": "2025=ministerial formal awards; 2026=publicity only",
+  "note": "Only exact-count PDF table rows are exported. Other groups remain BLOCKED, not inferred."
+}
