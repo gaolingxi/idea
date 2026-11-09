@@ -1,8 +1,10 @@
 import importlib.util
 from pathlib import Path
+import sys
 import unittest
 
 HERE=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(HERE/"scripts"))
 path=HERE/"scripts"/"collect_nsfc_awards_from_universities.py"
 spec=importlib.util.spec_from_file_location("nsfc_awards_seed",path)
 module=importlib.util.module_from_spec(spec)
