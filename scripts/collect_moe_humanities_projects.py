@@ -34,8 +34,8 @@ KEYWORDS={
  "project_title":("项目名称","课题名称","项目题目","课题题目"),
  "project_category":("项目类别","项目类型","类别","资助类别"),
  "project_approval_number":("项目批准号","批准号","项目编号","批准编号"),
- "principal_investigator":("申请人","负责人","项目负责人","主持人"),
- "university":("学校名称","申请学校","依托单位","单位名称","所在学校","学校")
+ "principal_investigator":("申请人","负责人","项目负责人","主持人","首席专家"),
+ "university":("学校名称","申请学校","依托单位","单位名称","所在学校","学校","投标单位")
 }
 USER_AGENT="Mozilla/5.0 (compatible; AcademicPublicResearchData/1.0; human-reviewed)"
 def compact(v):
@@ -204,6 +204,10 @@ def run(args):
         audits.append(item)
         print("GROUP",json.dumps(item,ensure_ascii=False,sort_keys=True),flush=True)
     groups_passed=[v for v in audits if v["result"]=="PASS"]
+    # Across groups, approved projects must not reuse an official approval number.
+    all_approval_numbers=[r["project_approval_number"] for r in rows if r["project_approval_number"]]
+    if len(all_approval_numbers)!=len(set(all_approval_numbers)):
+        raise ValueError("Duplicate official MOE approval number across attached lists; refuse to publish")
     total_by_year=Counter(row["year"] for row in rows)
     report={
       "run_time":datetime.now(ZoneInfo("Asia/Tokyo")).isoformat(),
