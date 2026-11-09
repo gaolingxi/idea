@@ -47,6 +47,22 @@ def find_header(table):
             return i,mapping
     return None,None
 
+def parse_html_response(raw, declared_encoding):
+    """Decode raw university HTML without trusting requests' Latin-1 fallback.
+
+    When Content-Type has no charset, requests often reports ISO-8859-1 even
+    for UTF-8 Chinese pages. Prefer strict UTF-8 then allow BeautifulSoup
+    to detect other encodings rather than forcing a known-wrong Latin-1.
+    """
+    encoding = (declared_encoding or "").strip().lower()
+    if encoding in ("", "iso-8859-1", "latin-1", "none"):
+        try:
+            return BeautifulSoup(raw.decode("utf-8-sig"), "html.parser")
+        except UnicodeDecodeError:
+            return BeautifulSoup(raw, "html.parser", from_encoding=None)
+    return BeautifulSoup(raw, "html.parser", from_encoding=declared_encoding)
+
+
 def parse_tables(html,source):
     soup=BeautifulSoup(html,"html.parser")
     found=[]
@@ -117,7 +133,7 @@ def main():
             final,raw,ctype,encoding=fetcher.get(source["url"],source["allowed_hosts"])
             if "html" not in ctype.lower():
                 raise ValueError("Non-HTML official university notice")
-            soup=BeautifulSoup(raw,"html.parser",from_encoding=encoding)
+            soup=parse_html_response(raw,encoding)
             rows=parse_tables(str(soup),source)
             if len(rows)<source.get("min_rows",1):
                 raise ValueError("No structured NSFC awards with approval numbers found")
