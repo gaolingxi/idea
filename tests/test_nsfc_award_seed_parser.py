@@ -28,6 +28,18 @@ class NsfcPublicAwardsParserTest(unittest.TestCase):
         self.assertEqual(rows[0]["award_year"],"2026")
         self.assertEqual(rows[0]["collection_scope"],"partial_institution_records_not_nationwide")
 
+    def test_undecorated_utf8_response_with_latin1_fallback(self):
+        sample={"id":"nankai_economics_2026","year":2026,
+                "institution":"南开大学","unit":"经济学院",
+                "url":"https://economics.nankai.edu.cn/2026/0827/c15998a601524/page.htm"}
+        html="""<table><tr><th>项目批准号</th><th>负责人</th><th>项目名称</th><th>项目类别</th></tr>
+        <tr><td>72673088</td><td>丁思华</td><td>连接的生产与网络的形成：微观理论研究</td><td>面上项目</td></tr></table>"""
+        raw=html.encode("utf-8")
+        soup=module.parse_html_response(raw,"ISO-8859-1")
+        result=module.parse_tables(str(soup),sample)
+        self.assertEqual(len(result),1)
+        self.assertEqual(result[0]["project_title"],"连接的生产与网络的形成：微观理论研究")
+
     def test_sequence_number_not_used_as_approval_number(self):
         sample={
             "id":"hunnu_physics_2025","year":2025,
