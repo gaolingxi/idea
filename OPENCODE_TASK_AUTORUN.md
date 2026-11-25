@@ -1,20 +1,14 @@
-TASK_ID: IDEA_NSFC_PROJECT_LEVEL_SEED_V1_20261109
+TASK_ID: IDEA_XHS_DAILY_CLUES_V1_20261125
 TASK_VERSION: 2
 STATUS: PENDING
 EXECUTOR: OPENCODE
 NEXT_ACTOR: OPENCODE
 AUTOMATION_READY: YES
-AUTOMATION_REQUIRED_FILES: OPENCODE_TASK_NSFC_SEED.md;scripts/collect_nsfc_awards_from_universities.py;sources/nsfc_award_source_registry.json;requirements-site-crawler.txt;AGENTS.md
+AUTOMATION_REQUIRED_FILES: OPENCODE_TASK_XHS_DAILY.md;scripts/prepare_xhs_daily_clues.py;AGENTS.md
 
-# idea checker 自动领取｜国自然首批项目级名单
+# idea checker 自动领取｜小红书合规线索交接
 
-收到本项目 Orca OpenCode 的“继续”后：
-
-1. 在 idea/repo 检查 git status，工作树干净时使用 git pull --ff-only origin main 同步。
-2. 仔细阅读 OPENCODE_TASK_NSFC_SEED.md，执行 scripts/collect_nsfc_awards_from_universities.py；只采官方公开大学网站项目批准号、名称、负责人，不把局部大学项目列表当全国汇总。
-3. 核实基金委公开知识平台 kd.nsfc.cn 可查询情况；访问受限即报告，不绕过限制。
-4. 回写 OPENCODE_REPORT_NSFC_SEED.md 及 OPENCODE_REPORT_AUTORUN.md 的 TASK_ID、TASK_VERSION、STATUS 与真实结果。允许的公开元数据与审计JSON经检查后提交GitHub；不提交 data/、logs/、原PDF。
-5. 国社科已结案，严禁继续原来的NSSFC任务。执行一批即止，不自动创建其他科研任务。
-
-## 版本2：修复首轮BLOCKED问题
-首轮已执行，国自然项目入库0条（南开及湖南师大两个年度因 `requests` 在无charset的UTF-8网页中返回ISO-8859-1导致乱码；华中科技大学经济学院是HTTPS SSL连接失败，必须保留真实阻塞，绝不关掉证书验证）。ChatGPT现已更新脚本：在无明确编码或ISO-8859-1回退时先严格按UTF-8解析，失败才让BeautifulSoup探测其他编码；补充中文表头回归测试。请只重跑这一批，成功提取公开清单、去重、抽查后回写结果，并检查基金委公开查询站点的合规可用性。不要把高校局部名单当全国完整项目库。保留v1 BLOCKED审计记录。
+1. 在 idea/repo 确认工作树安全且当前任务 ID/version 一致，正常同步 origin/main。
+2. 执行 OPENCODE_TASK_XHS_DAILY.md。先检查合法获准的本地输入是否存在，运行已提交脚本 `python scripts/prepare_xhs_daily_clues.py`（有合格输入才整理；缺少输入应如实 BLOCKED）。
+3. 审查合格输出，只有明确许可公开分享的短研究概念及必要来源元数据可提交 `sources/xhs_daily/latest.json`；绝不上传原始笔记或用户数据、凭证。
+4. 回写 OPENCODE_REPORT_XHS_DAILY.md 和 OPENCODE_REPORT_AUTORUN.md，带 TASK_ID、TASK_VERSION、实际状态、NEXT_ACTOR: ChatGPT、条数、各账号覆盖和阻塞原因；实际成功才报告提交 SHA。没有许可不得绕过平台限制。单次执行即止，不自行新增计划任务。
