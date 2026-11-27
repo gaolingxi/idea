@@ -1,32 +1,37 @@
-TASK_ID: IDEA_XHS_DAILY_CLUES_V1_20261125
-TASK_VERSION: 2
-STATUS: BLOCKED
-NEXT_ACTOR: ChatGPT
+TASK_ID: IDEA_XHS_DAILY_CLUES_V3_20261127
+TASK_VERSION: 3
+STATUS: BLOCKED_WAITING_AUTHORIZED_INPUT
+NEXT_ACTOR: GEMINI
 
-# 每日小红书合规线索交接｜首次本地执行回执
+# 每日小红书经管选题线索框架 v3｜本地 Orca OpenCode 执行回执
 
-## 结论：BLOCKED（无获准输入）
-- 合规来源与输入核查：**`data/xhs/daily_approved_clues.csv` 不存在**（仓库内无 `data/xhs/` 目录）。按任务「没有授权输入即 BLOCKED，不自动抓取」，本次不抓取、不绕过、不生成虚假记录。
-- 整理脚本 `scripts/prepare_xhs_daily_clues.py` 存在（3247 字节），但任务规定**仅获得授权输入后运行**；无输入 → 未运行。
+## 1. 环境与代码自检
+- 工作树干净，已同步 `origin/main`（HEAD 26332c5）。
+- 单元测试：`python -m unittest discover -s tests -p "test_xhs*.py" -v` → **9/9 通过**（`test_xhs.py` 5 项：test_date / test_meta / test_reject_missing_permission / test_reject_untrusted_url / test_sqlite_dedup；`test_xhs_daily_clues.py` 4 项：test_build_approved_clues_and_snapshot / test_build_public_leads_rejects_xhs_url_as_primary / test_init_templates_creates_both_files / test_load_registry_has_four_active_accounts）。
 
-## 输入统计
-- 真实输入条数：0
-- 有效条数：0
-- 拒绝条数：0
-- 覆盖账号：无
-- 覆盖发布日期：无
+## 2. 本地模板初始化（仅本地 `data/xhs/`，未提交 Git）
+- `data/xhs/daily_approved_clues.template.csv`（135 B）已生成，表头：`account,published_at,source_url,concept,topic_category,primary_source_url,allow_collect,allow_public_share,authorization_reference`
+- `data/xhs/public_clue_leads.template.csv`（147 B）已生成，表头：`discovered_date,topic_category,concept,primary_source_type,primary_source_title,primary_source_url,primary_published_date,related_account_hint`
 
-## 未访问账号及原因
-- Kenny思享：未访问（无授权输入）
-- 大山经管资料：未访问（无授权输入）
-- iiiiop：未访问（无授权输入）
-- 土豆学姐（研究ing）：未访问（无授权输入）
+## 3. 轨道 A：获准小红书线索入库（主轨）
+- 本地 `data/xhs/daily_approved_clues.csv` **不存在** → `BLOCKED_WAITING_AUTHORIZED_INPUT`。
+- 输入 0 / 有效 0 / 拒绝 0；覆盖账号：无；覆盖日期：无。
+- 未抓取平台、未生成 `sources/xhs_daily/latest.json`、未覆盖任何旧快照（不存在）。
+
+## 4. 轨道 B：公开索引回溯一手源（补充轨）
+- 本地 `data/xhs/public_clue_leads.csv` **不存在** → 一手源条数 0。
+- 未生成 `sources/xhs_daily/verified_public_leads.json`。
+
+## 5. 每日定时触发状态核查
+- Windows 计划任务 `idea-OpenCode-10min` **存在且已启用**，每 10 分钟轮询（`wscript //B hidden_runner.vbs`）。
+- 上次运行：2026/11/27 20:29:18，上次结果 0；下次运行：2026/11/27 20:39:17。开始日期 2026/11/9。
+- 未新建重复任务。
+
+## 6. 提交与交接
+- 无新增公开 JSON（latest.json / verified_public_leads.json 未生成，无敏感或可提交数据）。
+- 提交内容：`OPENCODE_REPORT_XHS_DAILY.md` + `OPENCODE_REPORT_AUTORUN.md`。`data/`、`logs/` 未提交。
+- `NEXT_ACTOR: GEMINI`。
 
 ## 合规说明
-- 未登录、未取 Cookie、未用私有接口、未模拟浏览器规避平台限制；未绕过 robots/403/429/验证码；未上传任何小红书正文、账号内容、截图、评论、个人资料、付费内容或受限资料；未把搜索索引当授权。
-- 未生成 `sources/xhs_daily/latest.json`（无合格输入，不覆盖任何旧快照；旧快照不存在）。
-- 本报告及回执为本地真实核查结果。
-
-## 下一步
-- 需用户/获准来源准备 `data/xhs/daily_approved_clues.csv`（表头：`account,published_at,source_url,concept,allow_collect,allow_public_share,authorization_reference`），明确批准采集与公开分享后，方可运行 `prepare_xhs_daily_clues.py`。
-- 仅限公开搜索引擎索引可回溯并独立核实的公开政策/论文来源可作为另行标记的学术线索；不得声称看过小红书原帖。
+- 未绕过登录墙/验证码/403/429/robots/服务协议；未自动登录、未提取 Cookie、未调用私有接口、未模拟浏览器规避限制。
+- 未提交 `data/`、`logs/`、笔记正文、标题全文、截图、评论、个人隐私或授权凭证；无伪造记录或虚报条数。
