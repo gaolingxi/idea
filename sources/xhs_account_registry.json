@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-11-27",
+  "purpose": "中国经济学选题原始资料层 — 小红书合规线索账号与主题框架",
+  "compliance_policy": {
+    "allow_login_bypass": false,
+    "allow_captcha_bypass": false,
+    "allow_private_api": false,
+    "allow_cookie_extraction": false,
+    "allow_note_body_export": false,
+    "intake_modes": [
+      "authorized_curated_csv",
+      "public_search_traced_primary_source"
+    ]
+  },
+  "topic_categories": [
+    {
+      "id": "policy_macro",
+      "label": "宏观与产业政策解读",
+      "keywords": ["新质生产力", "数字经济", "财政货币", "双碳ESG", "产业政策", "对外贸易", "统一大市场"]
+    },
+    {
+      "id": "empirical_data",
+      "label": "微观数据库与因果推断",
+      "keywords": ["微观数据", "上市公司", "专利数据", "海关数据", "遥感夜间灯光", "DID", "工具变量", "断点回归"]
+    },
+    {
+      "id": "journal_conference",
+      "label": "顶刊速递与学术会议",
+      "keywords": ["经济研究", "管理世界", "经济学季刊", "中国工业经济", "AER", "QJE", "中国经济学年会", "CFRC"]
+    },
+    {
+      "id": "grant_funding",
+      "label": "科研基金与立项选题",
+      "keywords": ["国自然管理科学部", "国社科应用经济学", "教育部人文社科", "立项选题", "基金复盘"]
+    }
+  ],
+  "accounts": [
+    {
+      "account": "Kenny思享",
+      "tier": "tier1_core",
+      "status": "active",
+      "primary_category": "journal_conference",
+      "secondary_categories": ["empirical_data", "policy_macro"],
+      "focus": "经管前沿选题、实证研究思路与顶刊论文拆解",
+      "daily_priority": 1,
+      "verification": "project_seed_verified"
+    },
+    {
+      "account": "大山经管资料",
+      "tier": "tier1_core",
+      "status": "active",
+      "primary_category": "empirical_data",
+      "secondary_categories": ["policy_macro", "grant_funding"],
+      "focus": "经管实证数据库、政策整理与论文研究资料线索",
+      "daily_priority": 1,
+      "verification": "project_seed_verified"
+    },
+    {
+      "account": "iiiiop",
+      "tier": "tier1_core",
+      "status": "active",
+      "primary_category": "journal_conference",
+      "secondary_categories": ["empirical_data"],
+      "focus": "经济学与社科科研方法、选题观察与文献线索",
+      "daily_priority": 2,
+      "verification": "project_seed_verified"
+    },
+    {
+      "account": "土豆学姐（研究ing）",
+      "tier": "tier1_core",
+      "status": "active",
+      "primary_category": "grant_funding",
+      "secondary_categories": ["journal_conference"],
+      "focus": "经管科研进展、课题申报与投稿选题经验",
+      "daily_priority": 2,
+      "verification": "project_seed_verified"
+    }
+  ],
+  "expansion_slots": [
+    {
+      "slot_id": "expand_policy_macro_01",
+      "category": "policy_macro",
+      "status": "open_pending_real_account_verification",
+      "selection_criteria": "持续解读国务院/发改委/财政部/央行/工信部最新政策并给出经济学实证切入点的实名或高校经管博主；须人工核实真实账号名后方可移入 accounts"
+    },
+    {
+      "slot_id": "expand_empirical_data_01",
+      "category": "empirical_data",
+      "status": "open_pending_real_account_verification",
+      "selection_criteria": "专注中国微观数据库（CFPS/CHFS/CGSS/工商注册/专利/土地交易/招投标）与 Stata/Python 实证复现的经管博主；须人工核实后入库"
+    },
+    {
+      "slot_id": "expand_journal_conference_01",
+      "category": "journal_conference",
+      "status": "open_pending_real_account_verification",
+      "selection_criteria": "按周/按月梳理《经济研究》《管理世界》《中国工业经济》或英文 Top5/Field Top 工作论文的经管学术博主；须人工核实后入库"
+    },
+    {
+      "slot_id": "expand_grant_funding_01",
+      "category": "grant_funding",
+      "status": "open_pending_real_account_verification",
+      "selection_criteria": "专注国自然管理科学部（G01-G04）/国社科应用经济学立项趋势与指南拆解的博主；须人工核实后入库"
+    }
+  ]
+}
